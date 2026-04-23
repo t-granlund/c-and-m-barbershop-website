@@ -1,35 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" width="100%" height="100%" role="img" aria-label="C&amp;M Barber Shop logo">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" width="100%" height="100%" role="img" aria-label="C &amp; M Barber Shop logo">
   <!--
-       C&amp;M Barber Shop brand mark.
+       C &amp; M Barber Shop brand mark.
        Draw order (bottom to top):
-         1. Mustache: drawn FIRST so the oval can mask its upper
-            portion. Tips extend beyond the poles at x=18 and x=382
-            so they are clearly visible as upturned handlebar curls,
-            not hidden behind the flanking poles.
-         2. Left pole  (outer edge x=40, inner edge x=76)
-         3. Right pole (outer edge x=360, inner edge x=324)
-         4. Red oval   (masks pole inner edges and mustache top)
-         5. C&amp;M black circle + wordmark
-       Oval spans x 60..340, y 65..235.
-       Note: XML comments must not contain double-hyphens.
+         1. Left pole  (outer edge x=40, inner edge x=76)
+         2. Right pole (outer edge x=360, inner edge x=324)
+         3. Red oval
+         4. C &amp; M black circle (with spaced ampersand)
+         5. BARBER SHOP wordmark
+         6. Mustache — drawn LAST so it sits clearly visible
+            on the bottom front, unmasked.
     -->
 
-  <!-- 1. Mustache: classic curly handlebar with prominently upturned
-       tips that extend past the poles and clearly read as a mustache
-       shape even at small sizes (favicon, social share, etc.). -->
-  <path d="M 22 218
-           C 12 188, 54 178, 84 204
-           Q 130 232, 200 234
-           Q 270 232, 316 204
-           C 346 178, 388 188, 378 218
-           C 380 254, 336 280, 294 268
-           Q 248 252, 210 272
-           Q 200 284, 190 272
-           Q 152 252, 106 268
-           C 64 280, 20 254, 22 218 Z"
-        fill="#231F20"/>
-
-  <!-- 2. Left barber pole (outer edge at x=40, inner edge at x=76) -->
+  <!-- 1. Left barber pole -->
   <g transform="translate(40, 50)">
     <path d="M 18 0 C 8 0, 0 8, 0 18 L 36 18 C 36 8, 28 0, 18 0 Z" fill="#231F20"/>
     <rect x="2" y="18" width="32" height="174" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
@@ -42,7 +24,7 @@
     <path d="M 0 192 L 36 192 C 36 202, 28 210, 18 210 C 8 210, 0 202, 0 192 Z" fill="#231F20"/>
   </g>
 
-  <!-- 3. Right barber pole (mirror) -->
+  <!-- 2. Right barber pole (mirror) -->
   <g transform="translate(324, 50)">
     <path d="M 18 0 C 8 0, 0 8, 0 18 L 36 18 C 36 8, 28 0, 18 0 Z" fill="#231F20"/>
     <rect x="2" y="18" width="32" height="174" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
@@ -55,17 +37,33 @@
     <path d="M 0 192 L 36 192 C 36 202, 28 210, 18 210 C 8 210, 0 202, 0 192 Z" fill="#231F20"/>
   </g>
 
-  <!-- 4. Red oval, on top of mustache and poles -->
+  <!-- 3. Red oval -->
   <ellipse cx="200" cy="150" rx="140" ry="85" fill="#BE2B2D"/>
 
-  <!-- 5. C&M black circle -->
+  <!-- 4. C &amp; M black circle (spaced) -->
   <circle cx="200" cy="65" r="35" fill="#231F20"/>
   <text x="200" y="75" font-family="'Helvetica Neue', Arial, sans-serif"
-        font-weight="900" font-size="24" fill="#FFFFFF" text-anchor="middle">C&amp;M</text>
+        font-weight="900" font-size="22" fill="#FFFFFF" text-anchor="middle"
+        letter-spacing="0.02em">C &amp; M</text>
 
-  <!-- 6. BARBER SHOP wordmark -->
+  <!-- 5. BARBER SHOP wordmark -->
   <text x="200" y="145" font-family="'Helvetica Neue', Arial, sans-serif"
         font-weight="900" font-size="44" fill="#FFFFFF" text-anchor="middle">BARBER</text>
   <text x="200" y="195" font-family="'Helvetica Neue', Arial, sans-serif"
         font-weight="900" font-size="44" fill="#FFFFFF" text-anchor="middle">SHOP</text>
+
+  <!-- 6. Mustache — drawn LAST so it sits clearly visible on the bottom front.
+       Classic handlebar shape with upturned tips, centered below the oval. -->
+  <path d="M 200 265
+           C 170 265, 140 250, 110 230
+           C 90 218, 70 210, 50 220
+           C 35 228, 28 245, 40 258
+           C 55 272, 85 265, 110 255
+           C 135 245, 160 250, 200 265
+           C 240 250, 265 245, 290 255
+           C 315 265, 345 272, 360 258
+           C 372 245, 365 228, 350 220
+           C 330 210, 310 218, 290 230
+           C 260 250, 230 265, 200 265 Z"
+        fill="#231F20"/>
 </svg>
