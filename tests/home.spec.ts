@@ -74,9 +74,12 @@ test.describe("Homepage smoke", () => {
     expect(title!.toLowerCase()).toContain("map");
   });
 
-  test("logo SVG loads in hero, nav, and footer", async ({ page }) => {
-    const logos = page.locator('img[src="cm-logo.svg"]');
-    const count = await logos.count();
-    expect(count).toBeGreaterThanOrEqual(3); // nav, hero, footer
+  test("brand logo assets load in hero, nav, and footer", async ({ page }) => {
+    const navLogo = page.locator('.nav__logo[src="assets/logo-mark.png"]');
+    const heroLogo = page.locator('.hero__logo[src="assets/logo-primary.png"]');
+    const footLogo = page.locator('.foot__logo[src="assets/logo-primary.png"]');
+    await expect(navLogo).toHaveCount(1);
+    await expect(heroLogo).toHaveCount(1);
+    await expect(footLogo).toHaveCount(1);
   });
 });

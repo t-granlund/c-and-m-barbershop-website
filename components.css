@@ -14,7 +14,7 @@
   align-items: start;
 }
 .story__lead strong {
-  color: var(--navy);
+  color: var(--red);
   font-weight: 700;
 }
 .badges {
@@ -26,24 +26,24 @@
   list-style: none;
 }
 .badges li {
-  background: var(--off-white);
-  border: 1px solid rgba(27, 54, 93, 0.22);
+  background: rgba(255, 255, 255, 0.78);
+  border: 2px solid var(--charcoal);
   border-radius: 999px;
-  padding: 0.4rem 0.9rem;
+  padding: 0.42rem 0.95rem;
   font-size: 0.88rem;
-  color: var(--navy);
-  font-weight: 500;
+  color: var(--charcoal);
+  font-weight: 600;
 }
 
 .timeline {
   position: sticky;
   top: 6rem;
-  background: var(--navy);
+  background: linear-gradient(180deg, #151515 0%, #0A0A0A 100%);
   color: var(--white);
   border-radius: var(--radius-lg);
   padding: 2rem 2rem 1.5rem;
-  box-shadow: var(--shadow-card);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: var(--shadow-sign);
+  border: 3px solid var(--navy);
 }
 .timeline ol {
   list-style: none;
@@ -127,16 +127,18 @@
   margin: 2.5rem auto 0;
 }
 .service {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--charcoal);
+  border: 3px solid var(--navy);
   border-radius: var(--radius);
   padding: 1.75rem;
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.82);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 .service:hover {
-  transform: translateY(-4px);
-  border-color: rgba(212, 56, 58, 0.6);
-  background: rgba(255, 255, 255, 0.1);
+  transform: translate(-2px, -2px);
+  box-shadow: 11px 11px 0 rgba(0, 0, 0, 0.86);
+  border-color: var(--red);
 }
 .service__icon {
   font-size: 1.8rem;
@@ -149,20 +151,19 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin: 0 0 0.4rem;
-  color: var(--white);
+  color: var(--red);
 }
 .service p {
   margin: 0;
-  color: var(--white);
-  opacity: 0.9;
+  color: var(--charcoal-soft);
   font-size: 0.98rem;
 }
 .services__note {
   max-width: 56ch;
   margin: 2.5rem auto 0;
   text-align: center;
-  color: var(--white);
-  opacity: 0.85;
+  color: var(--paper);
+  opacity: 0.92;
   font-style: italic;
 }
 
@@ -185,12 +186,12 @@
 }
 .stylist {
   position: relative;
-  color: var(--white);
-  background: linear-gradient(160deg, var(--navy-mid), var(--navy-dark));
+  color: var(--charcoal);
+  background: rgba(255, 255, 255, 0.96);
   padding: 1.75rem 1.25rem 1.5rem;
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.82);
+  border: 3px solid var(--charcoal);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   text-align: center;
   display: flex;
@@ -198,27 +199,24 @@
   gap: 0.35rem;
 }
 .stylist:hover {
-  transform: translateY(-4px);
-  border-color: rgba(212, 56, 58, 0.65);
-  box-shadow: 0 24px 50px -24px rgba(14, 31, 58, 0.55);
+  transform: translate(-2px, -2px);
+  border-color: var(--navy);
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.86);
 }
-/* Alternate every other card with a charcoal tone for visual rhythm */
 .stylist:nth-child(even) {
-  background: linear-gradient(160deg, #2E2A2B, var(--charcoal));
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: var(--navy);
 }
 .stylist__initial {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 3rem;
   line-height: 1;
-  color: var(--red-hot);
+  color: var(--red);
   margin: 0;
   letter-spacing: 0.02em;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
 }
 .stylist:nth-child(even) .stylist__initial {
-  color: var(--white);
+  color: var(--navy);
 }
 .stylist__name {
   font-family: var(--font-display);
@@ -234,20 +232,18 @@
   text-transform: uppercase;
   font-size: 0.78rem;
   font-weight: 500;
-  /* Light slate on navy gradient = WCAG AA pass */
-  color: #C9D3E3;
+  color: var(--slate);
   margin: 0 0 0.25rem;
 }
 .stylist:nth-child(even) .stylist__role {
-  color: #E8E4E5;
+  color: var(--slate);
 }
 .stylist__number {
   font-family: var(--font-cond);
   letter-spacing: 0.06em;
   font-size: 1.15rem;
   margin: 0 0 0.6rem;
-  color: var(--cream);
-  opacity: 0.9;
+  color: var(--charcoal);
 }
 .stylist__actions {
   display: grid;
@@ -273,23 +269,27 @@
 }
 .btn-mini--call {
   background: var(--red);
-  color: var(--cream);
+  color: var(--white);
+  border-color: var(--navy);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.8);
 }
 .btn-mini--call:hover,
 .btn-mini--call:focus-visible {
   background: var(--red-hot);
-  transform: translateY(-1px);
+  transform: translate(-1px, -1px);
 }
 .btn-mini--text {
-  background: transparent;
-  color: var(--white);
-  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--charcoal);
+  border-color: var(--charcoal);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.75);
 }
 .btn-mini--text:hover,
 .btn-mini--text:focus-visible {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: var(--white);
-  transform: translateY(-1px);
+  background: var(--charcoal);
+  color: var(--white);
+  border-color: var(--navy);
+  transform: translate(-1px, -1px);
 }
 /* sms: links don't work on desktop — hint this visually (architect P1-8) */
 @media (hover: hover) and (pointer: fine) {
@@ -411,8 +411,8 @@
 .visit__mapwrap {
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 3px solid var(--navy);
-  box-shadow: var(--shadow-card);
+  border: 4px solid var(--navy);
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.82);
   aspect-ratio: 4 / 3;
   background: var(--navy-dark);
 }
@@ -429,14 +429,14 @@
 }
 
 /* =========================================================
-   FOOTER — white-first, clean and modern
+   FOOTER — black signboard, high contrast, brand-forward
    ========================================================= */
 .foot {
-  background: var(--white);
-  color: var(--navy);
+  background: #0C0C0C;
+  color: var(--paper);
   padding: 3rem 1.5rem;
   text-align: center;
-  border-top: 1px solid rgba(27, 54, 93, 0.08);
+  border-top: 4px solid var(--navy);
 }
 .foot__inner {
   max-width: 720px;
@@ -445,18 +445,18 @@
 .foot__logo {
   display: block;
   margin: 0 auto 1rem;
-  height: 90px;
-  width: auto;
-  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.35));
+  width: min(280px, 65vw);
+  height: auto;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
 }
 .foot__brand {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.6rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   margin: 0 0 0.3rem;
-  color: var(--navy);
+  color: var(--paper);
 }
 .foot__tag {
   font-family: var(--font-cond);
@@ -464,18 +464,18 @@
   text-transform: uppercase;
   font-size: 0.86rem;
   font-weight: 500;
-  color: var(--charcoal-soft);
+  color: rgba(245, 240, 228, 0.82);
   margin: 0 0 1.25rem;
 }
 .foot__meta {
   font-size: 0.85rem;
-  color: var(--slate);
+  color: rgba(245, 240, 228, 0.68);
   margin: 0;
 }
 /* Inline footer links (address, phone, email) — inherit tracking, underline
    on hover/focus so they're discoverable without shouting visually. */
 .foot__link {
-  color: var(--charcoal);
+  color: var(--paper);
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: border-color 0.15s ease, color 0.15s ease;
@@ -505,21 +505,21 @@
   gap: 0.5em;
   padding: 0.5rem 1rem;
   border-radius: 999px;
-  border: 1px solid rgba(27, 54, 93, 0.2);
-  color: var(--navy);
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  color: var(--paper);
   text-decoration: none;
   font-family: var(--font-cond);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-size: 0.78rem;
   font-weight: 500;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 .foot__social a:hover,
 .foot__social a:focus-visible {
-  background: rgba(27, 54, 93, 0.06);
-  border-color: var(--red);
-  color: var(--red);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--navy);
+  color: var(--red-hot);
 }
 .foot__social svg {
   flex-shrink: 0;

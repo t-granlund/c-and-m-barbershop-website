@@ -10,6 +10,7 @@
     "test:desktop": "npx playwright test --project=desktop",
     "test:mobile": "npx playwright test --project=mobile",
     "test:update-snapshots": "npx playwright test --update-snapshots",
+    "brand:build": "python3 scripts/generate-brand-assets.py",
     "og:build": "node scripts/generate-og-image.mjs",
     "serve": "python3 -m http.server 8181"
   },

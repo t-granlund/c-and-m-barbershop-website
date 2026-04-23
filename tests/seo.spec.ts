@@ -68,9 +68,9 @@ test.describe("SEO metadata", () => {
     expect(business.image.height).toBe(630);
   });
 
-  test("theme-color matches the brand navy", async ({ page }) => {
+  test("theme-color matches the brand black signboard", async ({ page }) => {
     const theme = await page.locator('meta[name="theme-color"]').getAttribute("content");
-    expect(theme).toBe("#1B365D");
+    expect(theme).toBe("#0C0C0C");
   });
 
   test("sitemap.xml and robots.txt are served", async ({ request }) => {
@@ -142,42 +142,35 @@ test.describe("Footer contact info is actionable", () => {
   });
 });
 
-test.describe("Logo SVG integrity", () => {
-  test("logo SVG is served with correct MIME type", async ({ request }) => {
-    const res = await request.get("/cm-logo.svg");
+test.describe("Logo + favicon asset integrity", () => {
+  test("primary logo PNG is served with correct MIME type", async ({ request }) => {
+    const res = await request.get("/assets/logo-primary.png");
     expect(res.status()).toBe(200);
-    expect(res.headers()["content-type"]).toContain("svg");
+    expect(res.headers()["content-type"]).toContain("png");
   });
 
-  test("logo has the 6 expected structural components", async ({ request }) => {
-    const res = await request.get("/cm-logo.svg");
-    const body = await res.text();
-    // Barber poles (2x <g> with translate)
-    expect(body).toContain('transform="translate(40, 50)"');
-    expect(body).toContain('transform="translate(324, 50)"');
-    // Red oval
-    expect(body).toMatch(/<ellipse[^>]*fill="#B40823"/);
-    // C&M circle
-    expect(body).toMatch(/<circle[^>]*fill="#231F20"/);
-    // BARBER + SHOP wordmark
-    expect(body).toContain(">BARBER<");
-    expect(body).toContain(">SHOP<");
-    // Mustache: must be two separate paths (the v4 fix), not one self-intersecting path
-    const mustacheGroupMatch = body.match(/v4: tightened[\s\S]*?<\/g>/);
-    expect(mustacheGroupMatch).not.toBeNull();
-    const pathCount = (mustacheGroupMatch![0].match(/<path/g) || []).length;
-    expect(pathCount).toBe(2);
+  test("favicon assets are served", async ({ request }) => {
+    const png32 = await request.get("/favicon-32x32.png");
+    expect(png32.status()).toBe(200);
+    const apple = await request.get("/apple-touch-icon.png");
+    expect(apple.status()).toBe(200);
+    const ico = await request.get("/favicon.ico");
+    expect(ico.status()).toBe(200);
   });
 
-  test("logo renders without broken paths (visual snapshot)", async ({ page }) => {
-    // Navigate to homepage first so the baseURL is set, then inject a
-    // deterministic wrapper so screenshots are stable across runs.
-    // (Native browser SVG views never settle network-idle, causing flakes.)
+  test("homepage references the new PNG logo assets", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.locator(".nav__logo")).toHaveAttribute("src", /assets\/logo-mark\.png/);
+    await expect(page.locator(".hero__logo")).toHaveAttribute("src", /assets\/logo-primary\.png/);
+    await expect(page.locator(".foot__logo")).toHaveAttribute("src", /assets\/logo-primary\.png/);
+  });
+
+  test("primary logo renders without broken transparency (visual snapshot)", async ({ page }) => {
     await page.goto("/");
     await page.evaluate(() => {
       document.body.innerHTML =
-        '<div id="snap-wrap" style="width:800px;height:640px;background:#fff;display:flex;align-items:center;justify-content:center;margin:0;">' +
-        '<img id="snap-logo" src="/cm-logo.svg" style="width:800px;height:640px;" alt="">' +
+        '<div id="snap-wrap" style="width:900px;height:720px;background:#f5f0e4;display:flex;align-items:center;justify-content:center;margin:0;">' +
+        '<img id="snap-logo" src="/assets/logo-primary.png" style="width:720px;height:auto;" alt="">' +
         "</div>";
       document.documentElement.style.margin = "0";
       document.body.style.margin = "0";
@@ -186,10 +179,8 @@ test.describe("Logo SVG integrity", () => {
       const img = document.getElementById("snap-logo") as HTMLImageElement | null;
       return !!img && img.complete && img.naturalWidth > 0;
     });
-    // Tolerant snapshot: 2% pixel diff allowance covers font hinting drift
-    // across OS versions without losing sensitivity to actual rendering bugs.
-    await expect(page.locator("#snap-logo")).toHaveScreenshot("cm-logo.png", {
-      maxDiffPixelRatio: 0.02,
+    await expect(page.locator("#snap-wrap")).toHaveScreenshot("logo-primary.png", {
+      maxDiffPixelRatio: 0.03,
     });
   });
 });

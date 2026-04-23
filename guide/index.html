@@ -29,18 +29,18 @@
   <style>
     /* ---------- Design tokens — match the main site (styles.css) ---------- */
     :root {
-      /* Palette: Heritage Red, True Navy, Crisp White, Charcoal. */
-      --red:         #B40823;  /* WCAG AAA: 7:1 on white */
-      --red-hot:     #C60A28;  /* Hover state, maintains AAA */
-      --red-soft:    #FDECEC;
-      --navy:        #1B365D;
-      --navy-dark:   #0E1F3A;
-      --navy-soft:   #E8F0FC;
+      /* Palette: vintage barbershop sign — cream wall, sign red, pole blue, black */
+      --red:         #B52A2C;
+      --red-hot:     #C83A3D;
+      --red-soft:    #F4DEDF;
+      --navy:        #2B57A5;
+      --navy-dark:   #193769;
+      --navy-soft:   #E8EDF8;
       --white:       #FFFFFF;
-      --off-white:   #F7F7F5;
-      --charcoal:    #231F20;
-      --charcoal-soft: #4A4547;
-      --slate:       #575757;  /* WCAG AAA: 7:1 on white */
+      --off-white:   #F5F0E4;
+      --charcoal:    #141414;
+      --charcoal-soft: #403A34;
+      --slate:       #5C5750;
       --muted:       var(--slate);  /* Alias for muted text — single source of truth */
       --border:      #E5E0DB;
       --green:       #1F7A44;
@@ -62,7 +62,7 @@
       max-width: 820px;
       margin: 0 auto;
       padding: 1.25rem 1.25rem 4rem;
-      background: var(--off-white);
+      background: repeating-linear-gradient(180deg, var(--off-white) 0 10px, #EAE1CF 10px 12px, var(--off-white) 12px 22px);
       color: var(--charcoal);
       font-size: 17px;
       -webkit-font-smoothing: antialiased;
@@ -78,13 +78,14 @@
 
     /* ---------- Top banner ---------- */
     .banner {
-      background: linear-gradient(135deg, var(--red) 0%, #8F1F21 100%);
+      background: linear-gradient(180deg, #151515 0%, #0B0B0B 100%);
       color: var(--white);
       border-radius: 18px;
       padding: 1.75rem 1.5rem;
       margin: 0 0 1.5rem;
       text-align: center;
-      box-shadow: 0 10px 30px -14px rgba(190, 43, 45, 0.45);
+      border: 4px solid var(--navy);
+      box-shadow: 8px 8px 0 rgba(0,0,0,0.85);
     }
     .banner h1 {
       margin: 0 0 0.3rem;
@@ -102,11 +103,12 @@
     .banner .stamp {
       margin-top: 1rem;
       display: inline-block;
-      background: rgba(255,255,255,0.18);
+      background: linear-gradient(180deg, var(--red-hot) 0%, var(--red) 100%);
+      border: 2px solid var(--navy);
       padding: 0.35rem 0.9rem;
-      border-radius: 999px;
+      border-radius: 10px;
       font-size: 0.85rem;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.08em;
     }
 
     /* ---------- Intro card ---------- */

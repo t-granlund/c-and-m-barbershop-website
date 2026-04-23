@@ -14,7 +14,7 @@
   <meta name="googlebot" content="index, follow" />
   
   <!-- Theme & Mobile -->
-  <meta name="theme-color" content="#1B365D" />
+  <meta name="theme-color" content="#0C0C0C" />
   <meta name="color-scheme" content="light" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -24,12 +24,10 @@
   
   <!-- Canonical & Links -->
   <link rel="canonical" href="https://www.candmbarbershop.net/" />
-  <link rel="icon" type="image/svg+xml" href="cm-logo.svg" sizes="any" />
-  <link rel="apple-touch-icon" href="cm-logo.svg" />
-  <!-- Note: mask-icon removed. Safari's pinned-tab mask-icon requires a
-       single-path monochrome SVG; our multi-path full-color logo does not
-       qualify and was rendering as a solid red blob. Safari gracefully
-       falls back to the regular favicon above. -->
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
   
   <!-- Resource Hints for Performance -->
   <!-- Preload self-hosted variable fonts so they race the CSS parse. -->
@@ -49,13 +47,13 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.candmbarbershop.net/" />
   <!-- OG image: PNG (1200x630) — Facebook, LinkedIn, and iMessage
-       reject or mis-render SVG og images. Generated from cm-logo.svg
-       and committed alongside the SVG source of truth. -->
+       reject or mis-render SVG og images. Generated from the owner-provided
+       PNG poster logo and committed as a web-safe raster asset. -->
   <meta property="og:image" content="https://www.candmbarbershop.net/og-image.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="C&amp;M Barber Shop logo - red oval with barber poles and mustache" />
+  <meta property="og:image:alt" content="C&amp;M Barber Shop vintage sign logo with barber poles and mustache" />
   
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -63,7 +61,7 @@
   <meta name="twitter:title" content="C&amp;M Barber Shop &amp; Family Hair | Pineville, MO" />
   <meta name="twitter:description" content="Classic service for the modern family. Men, women &amp; kids welcome. Serving NWA since 2005. Walk-ins always welcome." />
   <meta name="twitter:image" content="https://www.candmbarbershop.net/og-image.png" />
-  <meta name="twitter:image:alt" content="C&amp;M Barber Shop logo" />
+  <meta name="twitter:image:alt" content="C&amp;M Barber Shop vintage sign logo" />
 
   <!--
     Fonts: Oswald (headings/condensed) + Open Sans (body).
@@ -94,7 +92,9 @@
         },
         "logo": {
           "@type": "ImageObject",
-          "url": "https://www.candmbarbershop.net/cm-logo.svg"
+          "url": "https://www.candmbarbershop.net/assets/logo-mark-512.png",
+          "width": 512,
+          "height": 512
         },
         "telephone": "+1-479-876-1072",
         "email": "info@candmbarbershop.net",
@@ -208,7 +208,7 @@
         "about": { "@id": "https://www.candmbarbershop.net/#business" },
         "primaryImageOfPage": {
           "@type": "ImageObject",
-          "url": "https://www.candmbarbershop.net/cm-logo.svg"
+          "url": "https://www.candmbarbershop.net/og-image.png"
         },
         "breadcrumb": {
           "@type": "BreadcrumbList",
@@ -230,7 +230,7 @@
   <!-- ============ TOP NAV ============ -->
   <header class="nav" role="banner">
     <a href="#top" class="nav__brand" aria-label="C & M Barber Shop home">
-      <img class="nav__logo" src="cm-logo.svg" alt="" aria-hidden="true" width="64" height="48" />
+      <img class="nav__logo" src="assets/logo-mark.png" alt="" aria-hidden="true" width="48" height="48" />
       <span class="nav__wordmark">Barber Shop <em>&amp; Family Hair</em></span>
     </a>
     <nav class="nav__links" aria-label="Primary">
@@ -248,7 +248,7 @@
   <section id="top" class="hero">
     <div class="hero__veil"></div>
     <div class="hero__content">
-      <img class="hero__logo" src="cm-logo.svg" alt="C&amp;M Barber Shop" width="240" height="180" />
+      <img class="hero__logo" src="assets/logo-primary.png" alt="C&amp;M Barber Shop" width="2056" height="1532" />
       <p class="hero__eyebrow" data-live-status>
         <span class="dot" aria-hidden="true"></span>
         <span data-status-text>Pineville, MO &nbsp;·&nbsp; Serving NWA since 2005</span>
@@ -530,7 +530,7 @@
   <!-- ============ FOOTER ============ -->
   <footer class="foot">
     <div class="foot__inner">
-      <img class="foot__logo" src="cm-logo.svg" alt="" aria-hidden="true" width="140" height="105" />
+      <img class="foot__logo" src="assets/logo-primary.png" alt="" aria-hidden="true" width="2056" height="1532" />
       <p class="foot__brand">
         C <span aria-hidden="true">&amp;</span> M Barber Shop &amp; Family Hair
       </p>

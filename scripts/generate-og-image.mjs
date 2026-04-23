@@ -17,34 +17,58 @@ import { dirname, resolve } from "node:path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, "..");
-const svg = readFileSync(resolve(root, "cm-logo.svg"), "utf8");
+const logoBase64 = readFileSync(resolve(root, "assets/logo-primary.png")).toString("base64");
+const logoUrl = `data:image/png;base64,${logoBase64}`;
 
 // Inline HTML so we don't need a running webserver.
-// Background matches the hero's off-white so the social card feels on-brand.
 const html = `<!DOCTYPE html>
 <html><head><meta charset="utf-8"><style>
   html, body { margin: 0; padding: 0; }
   body {
     width: 1200px; height: 630px;
     display: flex; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, #FFFFFF 0%, #F7F7F5 100%);
+    background:
+      radial-gradient(circle at 50% 20%, rgba(181, 42, 44, 0.12) 0%, transparent 35%),
+      repeating-linear-gradient(180deg, #F5F0E4 0 10px, #EAE1CF 10px 12px, #F5F0E4 12px 22px);
     font-family: system-ui, -apple-system, sans-serif;
   }
-  .card {
-    display: flex; flex-direction: column; align-items: center;
-    gap: 24px;
+  .frame {
+    width: 1080px; height: 540px;
+    display: grid; grid-template-columns: 1.05fr 0.95fr; align-items: center;
+    gap: 12px; padding: 24px 36px;
+    border: 6px solid #2B57A5; box-shadow: 12px 12px 0 #0C0C0C;
+    background: rgba(255,255,255,0.35);
   }
-  .logo { width: 640px; height: 512px; }
-  .tag {
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    font-weight: 900; letter-spacing: 0.18em; text-transform: uppercase;
-    color: #1B365D; font-size: 22px;
+  .logo { width: 100%; max-width: 540px; justify-self: center; filter: drop-shadow(0 18px 24px rgba(0,0,0,0.18)); }
+  .copy { display: grid; gap: 14px; color: #141414; }
+  .eyebrow {
+    font-family: Impact, Oswald, sans-serif; font-size: 20px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: #B52A2C; font-weight: 700;
+  }
+  h1 {
+    margin: 0; font-family: Impact, Oswald, sans-serif; font-size: 72px; line-height: 0.92;
+    text-transform: uppercase; letter-spacing: 0.02em; color: #141414;
+  }
+  .accent { color: #B52A2C; font-style: italic; text-transform: none; }
+  .sub {
+    font-size: 27px; line-height: 1.3; color: #403A34; font-weight: 600;
+  }
+  .pill {
+    justify-self: start; background: linear-gradient(180deg, #C83A3D 0%, #B52A2C 100%);
+    color: white; border: 3px solid #2B57A5; box-shadow: 6px 6px 0 #0C0C0C;
+    padding: 16px 24px; font-family: Impact, Oswald, sans-serif; font-size: 22px;
+    letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700;
   }
 </style></head>
 <body>
-  <div class="card">
-    <div class="logo">${svg}</div>
-    <div class="tag">Pineville, MO &nbsp;·&nbsp; Serving NWA Since 2005</div>
+  <div class="frame">
+    <img class="logo" src="${logoUrl}" alt="C&M Barber Shop logo">
+    <div class="copy">
+      <div class="eyebrow">Pineville, Missouri</div>
+      <h1>Walk-Ins<br><span class="accent">Always Welcome.</span></h1>
+      <div class="sub">Classic service for the modern family. Men, women, and kids welcome.</div>
+      <div class="pill">Serving NWA Since 2005</div>
+    </div>
   </div>
 </body></html>`;
 
