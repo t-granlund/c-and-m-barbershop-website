@@ -256,6 +256,7 @@ main:focus {
   flex-shrink: 0;
   object-fit: contain;
   border-radius: 50%;
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,0.08));
 }
 .nav__wordmark {
   font-family: var(--font-cond);

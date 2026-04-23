@@ -160,7 +160,7 @@ test.describe("Logo + favicon asset integrity", () => {
 
   test("homepage references the new PNG logo assets", async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator(".nav__logo")).toHaveAttribute("src", /assets\/logo-mark\.png/);
+    await expect(page.locator(".nav__logo")).toHaveAttribute("src", /assets\/logo-nav\.svg/);
     await expect(page.locator(".hero__logo")).toHaveAttribute("src", /assets\/logo-primary\.png/);
     await expect(page.locator(".foot__logo")).toHaveAttribute("src", /assets\/logo-primary\.png/);
   });

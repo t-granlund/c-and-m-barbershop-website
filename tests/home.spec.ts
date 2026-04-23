@@ -75,7 +75,7 @@ test.describe("Homepage smoke", () => {
   });
 
   test("brand logo assets load in hero, nav, and footer", async ({ page }) => {
-    const navLogo = page.locator('.nav__logo[src="assets/logo-mark.png"]');
+    const navLogo = page.locator('.nav__logo[src="assets/logo-nav.svg"]');
     const heroLogo = page.locator('.hero__logo[src="assets/logo-primary.png"]');
     const footLogo = page.locator('.foot__logo[src="assets/logo-primary.png"]');
     await expect(navLogo).toHaveCount(1);
