@@ -429,14 +429,14 @@
 }
 
 /* =========================================================
-   FOOTER
+   FOOTER — white-first, clean and modern
    ========================================================= */
 .foot {
-  background: var(--navy-dark);
-  color: var(--white);
+  background: var(--white);
+  color: var(--navy);
   padding: 3rem 1.5rem;
   text-align: center;
-  border-top: 4px solid var(--red);
+  border-top: 1px solid rgba(27, 54, 93, 0.08);
 }
 .foot__inner {
   max-width: 720px;
@@ -456,7 +456,7 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin: 0 0 0.3rem;
-  color: var(--white);
+  color: var(--navy);
 }
 .foot__tag {
   font-family: var(--font-cond);
@@ -464,14 +464,12 @@
   text-transform: uppercase;
   font-size: 0.86rem;
   font-weight: 500;
-  /* White on navy-dark = WCAG AAA contrast */
-  color: var(--white);
-  opacity: 0.92;
+  color: var(--charcoal-soft);
   margin: 0 0 1.25rem;
 }
 .foot__meta {
   font-size: 0.85rem;
-  opacity: 0.7;
+  color: var(--slate);
   margin: 0;
 }
 .foot__social {
@@ -488,8 +486,8 @@
   gap: 0.5em;
   padding: 0.5rem 1rem;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: var(--white);
+  border: 1px solid rgba(27, 54, 93, 0.2);
+  color: var(--navy);
   text-decoration: none;
   font-family: var(--font-cond);
   letter-spacing: 0.14em;
@@ -500,8 +498,9 @@
 }
 .foot__social a:hover,
 .foot__social a:focus-visible {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: var(--red-hot);
+  background: rgba(27, 54, 93, 0.06);
+  border-color: var(--red);
+  color: var(--red);
 }
 .foot__social svg {
   flex-shrink: 0;

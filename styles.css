@@ -6,17 +6,21 @@
    ========================================================= */
 
 :root {
-  /* ---------- Heritage palette (directives §4) ---------- */
+  /* ---------- Heritage palette (directives §4) — white-first ---------- */
   --red:        #BE2B2D;  /* Heritage Red — primary CTA / accent */
   --red-hot:    #D4383A;  /* Brighter red for hover */
-  --navy:       #1B365D;  /* True Navy — secondary / dark surfaces */
-  --navy-dark:  #0E1F3A;  /* Deeper navy for gradient bottoms */
-  --navy-mid:   #2A4A78;  /* Mid navy for cards / alt surfaces */
-  --white:      #FFFFFF;  /* Crisp White — backgrounds */
-  --off-white:  #F7F7F5;  /* Subtle warm off-white for section contrast */
+  --red-soft:   #FDECEC;  /* Light red tint for backgrounds */
+  --navy:       #1B365D;  /* True Navy — secondary text, borders, accents */
+  --navy-soft:  #E8EEF5;  /* Very light navy for subtle fills */
+  --white:      #FFFFFF;  /* Crisp White — primary surface */
+  --off-white:  #F7F7F5;  /* Warm off-white for section contrast */
   --charcoal:   #231F20;  /* Charcoal Black — body text */
   --charcoal-soft: #4A4547; /* Softer charcoal for secondary text */
-  --slate-light: #9DB0CC; /* Light blue-grey for decorative text on navy */
+  --slate:      #6B7A8F;  /* Slate for muted text on white */
+
+  /* Legacy aliases for backwards compatibility */
+  --navy-dark:  var(--navy);
+  --navy-mid:   var(--navy);
 
   /* ---------- Legacy aliases (so components.css keeps working) ---------- */
   --forest-900: var(--navy-dark);
@@ -107,19 +111,17 @@ a {
   outline-offset: 3px;
   border-radius: 4px;
 }
-/* Red CTAs on dark or red backgrounds need a light focus ring */
+/* Focus rings adjusted for white-first palette */
 .btn--primary:focus-visible,
 .nav__cta:focus-visible,
 .mobile-cta:focus-visible,
 .btn-mini--call:focus-visible {
-  outline-color: var(--white);
+  outline-color: var(--navy);
   outline-offset: 4px;
 }
-/* Elements on navy backgrounds get a white focus ring */
-.section--dark :focus-visible,
-.hero :focus-visible,
-.foot :focus-visible {
-  outline-color: var(--white);
+/* Dark sections keep navy focus ring for contrast */
+.section--dark :focus-visible {
+  outline-color: var(--navy);
 }
 
 /* ---------- Reusable bits ---------- */
@@ -133,7 +135,7 @@ a {
   font-weight: 600;
 }
 .eyebrow--light {
-  color: var(--white);
+  color: var(--red);
   opacity: 0.9;
 }
 .section {
@@ -142,13 +144,13 @@ a {
   padding: 6rem 1.5rem;
 }
 .section--dark {
-  background: var(--navy);
-  color: var(--white);
+  background: var(--navy-soft);
+  color: var(--navy);
   max-width: none;
 }
 .section--dark .section__title,
 .section--dark .lede {
-  color: var(--white);
+  color: var(--navy);
 }
 .section__title {
   font-family: var(--font-display);
@@ -161,7 +163,7 @@ a {
   text-transform: uppercase;
 }
 .section__title--light {
-  color: var(--white);
+  color: var(--navy);
 }
 .lede {
   font-size: 1.15rem;
@@ -195,16 +197,16 @@ a {
   transform: translateY(-2px);
 }
 .btn--ghost {
-  border-color: var(--white);
-  color: var(--white);
+  border-color: var(--navy);
+  color: var(--navy);
 }
 .btn--ghost:hover {
-  background: var(--white);
-  color: var(--navy);
+  background: var(--navy);
+  color: var(--white);
 }
 
 /* =========================================================
-   NAV
+   NAV — white-first, clean and modern
    ========================================================= */
 .nav {
   position: sticky;
@@ -215,36 +217,35 @@ a {
   justify-content: space-between;
   gap: 1rem;
   padding: 0.9rem 1.5rem;
-  background: rgba(27, 54, 93, 0.96);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(8px);
-  color: var(--white);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--navy);
+  border-bottom: 1px solid rgba(27, 54, 93, 0.08);
+  box-shadow: 0 2px 20px -8px rgba(27, 54, 93, 0.12);
 }
 .nav__brand {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   text-decoration: none;
-  color: var(--white);
+  color: var(--navy);
 }
 .nav__logo {
   height: 44px;
   width: auto;
   flex-shrink: 0;
-  /* Subtle drop shadow helps the logo read against the navy nav */
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
 }
 .nav__wordmark {
   font-family: var(--font-cond);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-size: 0.78rem;
-  color: var(--white);
+  color: var(--navy);
   opacity: 0.88;
 }
 .nav__wordmark em {
   font-style: italic;
-  color: var(--slate-light);
+  color: var(--red);
 }
 .nav__links {
   display: flex;
@@ -258,13 +259,13 @@ a {
 }
 .nav__links a {
   text-decoration: none;
-  color: var(--white);
+  color: var(--navy);
   opacity: 0.82;
   transition: opacity 0.15s ease, color 0.15s ease;
 }
 .nav__links a:hover {
   opacity: 1;
-  color: var(--white);
+  color: var(--red);
 }
 .nav__cta {
   background: var(--red);
@@ -291,7 +292,7 @@ a {
 }
 
 /* =========================================================
-   HERO
+   HERO — white-first, clean and breathable
    ========================================================= */
 .hero {
   position: relative;
@@ -300,25 +301,24 @@ a {
   align-items: center;
   justify-content: center;
   padding: 7rem 1.5rem 5rem;
-  color: var(--white);
+  color: var(--charcoal);
   text-align: center;
   isolation: isolate;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at top, rgba(42, 74, 120, 0.55), transparent 60%),
-    linear-gradient(180deg, var(--navy) 0%, var(--navy-dark) 100%);
+    radial-gradient(ellipse at 30% 20%, rgba(190, 43, 45, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(27, 54, 93, 0.03) 0%, transparent 40%),
+    linear-gradient(180deg, var(--white) 0%, var(--off-white) 100%);
 }
-/* Subtle barber-pole diagonal stripe texture (CSS-only, nods to the logo) */
+/* Subtle texture — very light, just enough depth */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
   background-image: repeating-linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.015) 0 20px,
-    rgba(255, 255, 255, 0)    20px 60px,
-    rgba(190, 43, 45, 0.03)   60px 80px,
-    rgba(255, 255, 255, 0)    80px 120px
+    rgba(27, 54, 93, 0.015) 0 40px,
+    rgba(255, 255, 255, 0) 40px 80px
   );
   pointer-events: none;
   z-index: -1;
@@ -353,18 +353,17 @@ a {
   margin: 0 auto 1.75rem;
   height: clamp(120px, 18vw, 180px);
   width: auto;
-  /* Elevation to lift the logo off the navy backdrop */
-  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.45));
+  /* Subtle shadow for depth on white background */
+  filter: drop-shadow(0 8px 24px rgba(27, 54, 93, 0.12));
 }
 .hero__eyebrow {
   font-family: var(--font-cond);
   letter-spacing: 0.3em;
   text-transform: uppercase;
   font-size: 0.9rem;
-  color: var(--white);
-  opacity: 0.92;
+  color: var(--red);
   margin: 0 0 1rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 .hero__title {
   font-family: var(--font-display);
@@ -374,17 +373,17 @@ a {
   margin: 0 0 1.25rem;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+  color: var(--navy);
 }
 .hero__accent {
-  color: var(--red-hot);
+  color: var(--red);
   font-style: italic;
   text-transform: none;
   letter-spacing: 0;
 }
 .hero__sub {
   font-size: 1.15rem;
-  color: var(--white);
-  opacity: 0.9;
+  color: var(--charcoal-soft);
   max-width: 56ch;
   margin: 0 auto 2rem;
   font-family: var(--font-body);
@@ -400,8 +399,8 @@ a {
   bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
-  color: var(--white);
-  opacity: 0.7;
+  color: var(--navy);
+  opacity: 0.6;
   text-decoration: none;
   font-size: 1.4rem;
   padding: 0.5rem 1rem;    /* bigger tap target (WCAG 2.5.8) */
