@@ -1,0 +1,31 @@
+{
+  "name": "c-and-m-barber-salon-website",
+  "version": "1.0.0",
+  "description": "Conversion-first, mobile-first, zero-framework static site for C&M Barber Shop & Family Hair (Pineville, MO).",
+  "main": "script.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:ui": "npx playwright test --ui",
+    "test:desktop": "npx playwright test --project=desktop",
+    "test:mobile": "npx playwright test --project=mobile",
+    "test:update-snapshots": "npx playwright test --update-snapshots",
+    "og:build": "node scripts/generate-og-image.mjs",
+    "serve": "python3 -m http.server 8181"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/t-granlund/c-and-m-barbershop-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/t-granlund/c-and-m-barbershop-website/issues"
+  },
+  "homepage": "https://github.com/t-granlund/c-and-m-barbershop-website#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1"
+  }
+}
