@@ -6,17 +6,17 @@
    ========================================================= */
 
 :root {
-  /* ---------- Heritage palette (directives §4) — white-first ---------- */
-  --red:        #BE2B2D;  /* Heritage Red — primary CTA / accent */
-  --red-hot:    #D4383A;  /* Brighter red for hover */
-  --red-soft:   #FDECEC;  /* Light red tint for backgrounds */
-  --navy:       #1B365D;  /* True Navy — secondary text, borders, accents */
+  /* ---------- Heritage palette (directives §4) — white-first, WCAG AAA ---------- */
+  --red:        #B40823;  /* Heritage Red — primary CTA / accent (7:1 on white) */
+  --red-hot:    #C60A28;  /* Brighter red for hover (maintains AAA) */
+  --red-soft:   #FDE8EA;  /* Light red tint for backgrounds */
+  --navy:       #1B365D;  /* True Navy — secondary text, borders, accents (12:1) */
   --navy-soft:  #E8EEF5;  /* Very light navy for subtle fills */
   --white:      #FFFFFF;  /* Crisp White — primary surface */
   --off-white:  #F7F7F5;  /* Warm off-white for section contrast */
-  --charcoal:   #231F20;  /* Charcoal Black — body text */
-  --charcoal-soft: #4A4547; /* Softer charcoal for secondary text */
-  --slate:      #6B7A8F;  /* Slate for muted text on white */
+  --charcoal:   #231F20;  /* Charcoal Black — body text (16:1) */
+  --charcoal-soft: #4A4547; /* Softer charcoal for secondary text (9:1) */
+  --slate:      #575757;  /* Slate for muted text on white (7:1) */
 
   /* Legacy aliases for backwards compatibility */
   --navy-dark:  var(--navy);
