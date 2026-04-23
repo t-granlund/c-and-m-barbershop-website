@@ -9,6 +9,45 @@ Built by Tyler, on a handshake.
 
 ---
 
+## 👀 Live preview
+
+**➡️ https://t-granlund.github.io/c-and-m-barbershop-website/**
+
+This GitHub Pages URL is a **preview / demo** so Charles &amp; Marie can see
+the site before approving the real launch. It is explicitly **not** the
+intended production host.
+
+### Why it's a preview, not the final site
+
+- **GitHub Pages does not support custom HTTP headers**, so our `_headers`
+  file (CSP, HSTS, Permissions-Policy, font cache-control, etc.) is
+  silently ignored here. Mozilla Observatory grade on this preview
+  is around a **C**; on the production Cloudflare Pages deployment
+  it's **A+**.
+- GitHub's ToS prohibits running a commercial business site on Pages
+  long-term (`research/barbershop-architecture-2025/raw-findings/hosts-comparison.md`).
+- The canonical URL in `index.html` still points at
+  `https://www.candmbarbershop.net/` — deliberate, so Google never
+  confuses the preview for the real site once it launches.
+- The Cloudflare Analytics beacon is a harmless no-op here
+  (`REPLACE_WITH_TOKEN` placeholder — see §Analytics below).
+
+### The production plan
+
+When Charles &amp; Marie approve, the owner-facing `GETTING_STARTED.html`
+walks them (or a $30–75 Fiverr pro) through deploying the exact same
+repo to **Cloudflare Pages**, which:
+
+- Supports `_headers` → restores the A+ security posture.
+- Has unlimited free bandwidth and no commercial-use restriction.
+- Can be connected directly to this GitHub repo for auto-deploys on every
+  `git push` — no more drag-and-drop after the first setup.
+
+In short: **this preview is read-only marketing; Cloudflare Pages is the
+live storefront.**
+
+---
+
 ## 📦 What's in here
 
 | File                     | Purpose                                                 |
