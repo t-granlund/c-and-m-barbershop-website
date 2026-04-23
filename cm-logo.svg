@@ -1,25 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" width="100%" height="100%" role="img" aria-label="C&amp;M Barber Shop logo">
-  <!-- =========================================================
-       C&M Barber Shop brand mark
-       ---------------------------------------------------------
-       Draw order (bottom → top):
-         1. Mustache    — sits behind everything; oval + poles mask it
-         2. Left pole   — overlaps oval horizontally; oval masks inner edge
-         3. Right pole  — mirror of left
-         4. Red oval    — masks pole inner edges and mustache top
-         5. C&M circle + wordmark
-
-       Key coordinates:
-         Oval:  cx=200 cy=150 rx=140 ry=85  (spans x 60..340, y 65..235)
-         Poles: cap width 36, total height 210, at translate(40, 50)
-                and translate(324, 50). Outer edges at x=40 / x=360.
-                Poles extend 15px above and 25px below the oval.
-         Mustache: horizontal span x=84..316, narrower than the poles
-                on purpose — tips curl up in the triangular gap between
-                the oval's curving bottom edge and the poles' outer
-                flanks, so both the pole bottom caps AND the mustache
-                tips stay fully visible.
-       ========================================================= -->
+  <!--
+       C&amp;M Barber Shop brand mark.
+       Draw order (bottom to top):
+         1. Mustache    (behind everything; oval + poles mask it)
+         2. Left pole   (overlaps oval horizontally; oval masks inner edge)
+         3. Right pole  (mirror of left)
+         4. Red oval    (masks pole inner edges and mustache top)
+         5. C&amp;M circle + wordmark
+       Oval spans x 60..340, y 65..235. Poles are 36 wide, 210 tall,
+       inner edges at x=76 / x=324 so they tuck behind the oval sides.
+       Note: XML comments must not contain double-hyphens, so separators
+       in this file are paragraph breaks rather than dashed lines.
+    -->
 
   <!-- 1. Mustache (drawn FIRST, behind everything) -->
   <path d="M 84 234
@@ -34,7 +26,7 @@
            C 116 280, 88 262, 84 234 Z"
         fill="#231F20"/>
 
-  <!-- 2. Left barber pole — outer edge at x=40, inner edge at x=76 -->
+  <!-- 2. Left barber pole (outer edge at x=40, inner edge at x=76) -->
   <g transform="translate(40, 50)">
     <path d="M 18 0 C 8 0, 0 8, 0 18 L 36 18 C 36 8, 28 0, 18 0 Z" fill="#231F20"/>
     <rect x="2" y="18" width="32" height="174" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
@@ -60,7 +52,7 @@
     <path d="M 0 192 L 36 192 C 36 202, 28 210, 18 210 C 8 210, 0 202, 0 192 Z" fill="#231F20"/>
   </g>
 
-  <!-- 4. Red oval — on top of mustache and poles -->
+  <!-- 4. Red oval, on top of mustache and poles -->
   <ellipse cx="200" cy="150" rx="140" ry="85" fill="#BE2B2D"/>
 
   <!-- 5. C&M black circle -->
