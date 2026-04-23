@@ -1,0 +1,26 @@
+Copyright (c) 2025 C&M Barber Shop & Family Hair (Charles & Marie).
+All rights reserved.
+
+This repository contains the website source code, copy, and brand assets for
+C&M Barber Shop & Family Hair (Pineville, MO). It is published publicly for
+transparency, backup, and convenience of anyone Charles & Marie hire to help
+maintain the site.
+
+PERMITTED:
+  - Viewing, forking, and cloning for the purpose of helping maintain or
+    improve the C&M Barber Shop website.
+  - Reusing generic, non-brand technical patterns (CSS structure, deployment
+    guides, build tooling) in your own unrelated projects.
+
+NOT PERMITTED WITHOUT WRITTEN PERMISSION:
+  - Reusing the C&M Barber Shop name, logo (cm-logo.svg), photography, or
+    customer-facing copy in any other project, site, or commercial work.
+  - Republishing this site under a different brand name.
+  - Any use that would create confusion about the identity or authorship of
+    C&M Barber Shop.
+
+No warranty is provided. The code is supplied "as is" for the benefit of the
+business owners and their chosen collaborators.
+
+Questions about commercial use or licensing: contact the site maintainer
+(see README.md).

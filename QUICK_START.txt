@@ -1,0 +1,70 @@
+C & M BARBER SHOP -- WEBSITE QUICK START   (tape to the mirror!)
+================================================================
+
+FOR THE FULL FRIENDLY VERSION: open GETTING_STARTED.html in a browser.
+This .txt is the one-page cheat-sheet version.
+
+YOUR WEBSITE FILES (keep them all together in one folder):
+  [ ] index.html        The main page
+  [ ] styles.css        Colors & fonts
+  [ ] components.css    Section layouts
+  [ ] script.js         The "Open Now" live clock
+  [ ] cm-logo.svg       The C&M logo
+  [ ] fonts/            The typefaces folder (NEVER delete)
+  [ ] _headers          Security settings (NEVER delete)
+Plus: robots.txt, sitemap.xml (SEO -- ship them too, don't edit).
+
+---- STEP 1 -- FIND YOUR DOMAIN FIRST --------------------------
+Search your email for "candmbarbershop.net" or "domain renewal".
+Whoever sent that email is your REGISTRAR. Common ones:
+   Squarespace (was Google Domains), GoDaddy, Namecheap,
+   Cloudflare, Porkbun.
+Do NOT start the steps below until you find that email.
+
+---- STEP 2 -- PICK YOUR PATH ----------------------------------
+
+OPTION A -- PAY A PRO (easiest, ~$50)
+  [ ] Zip the whole website folder
+  [ ] Go to fiverr.com, search "deploy static website cloudflare"
+  [ ] Hire for $30-75. Tell them:
+      "Deploy these files to Cloudflare Pages and connect
+       candmbarbershop.net. Remove any existing Google Sites
+       mapping first. Will share registrar login after we start."
+
+OPTION B -- DIY (free, ~30 min)
+  [ ] Sign up free: https://dash.cloudflare.com/sign-up
+  [ ] In dashboard: Workers & Pages -> Create -> Pages -> Upload
+  [ ] Name the project "cm-barber-shop"
+  [ ] Drag the folder onto the upload box
+  [ ] You get a free *.pages.dev address -- WRITE IT DOWN
+  [ ] Custom domains -> add candmbarbershop.net + www.candmbarbershop.net
+  [ ] Follow Cloudflare's DNS/nameserver instructions at your registrar
+  [ ] Wait 5-60 minutes; real domain goes live
+
+Cloudflare Pages: free, unlimited visitors, no surprise bills.
+
+---- STEP 3 -- PHONE-TEST AFTER IT'S LIVE ----------------------
+  [ ] Red "Pick Your Stylist" button sticks to bottom of screen
+  [ ] Tapping Call on a stylist card offers to call them
+  [ ] Tapping Text opens Messages
+  [ ] During business hours, a green "Open now" dot appears
+  [ ] Map shows 116 College Road, Pineville MO
+
+---- STEP 4 -- TURN ON ANALYTICS (optional, 5 min) ------------
+  [ ] Cloudflare dashboard -> Analytics & Logs -> Web Analytics
+  [ ] Add a site -> candmbarbershop.net -> COPY THE TOKEN
+  [ ] Open index.html in VS Code, search for REPLACE_WITH_TOKEN
+  [ ] Paste token in its place. Save. Re-upload the folder.
+
+---- EDITING LATER -- USE VS CODE, NOT TEXTEDIT ---------------
+Download free: https://code.visualstudio.com (Mac/Windows)
+TextEdit and regular Notepad secretly corrupt the files.
+For every edit: change -> save -> re-upload the whole folder
+to Cloudflare Pages (drag-and-drop, same as Step 2).
+
+---- IF STUCK --------------------------------------------------
+1. Text Tyler first.
+2. Post on Fiverr: "Fix my Cloudflare Pages site" (~$30-75).
+3. Your backup is safe -- any dev can restore in 30 minutes.
+
+Walk-ins always welcome!

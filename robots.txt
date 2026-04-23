@@ -1,0 +1,13 @@
+# robots.txt for C&M Barber Shop
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.candmbarbershop.net/sitemap.xml
+
+# Disallow admin or private areas if they exist
+# User-agent: *
+# Disallow: /admin/
+# Disallow: /private/

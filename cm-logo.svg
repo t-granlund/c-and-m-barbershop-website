@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%" role="img" aria-label="C&amp;M Barber Shop logo">
+  <!-- Red Oval Background -->
+  <ellipse cx="200" cy="150" rx="140" ry="85" fill="#BE2B2D"/>
+
+  <!-- Top Black Circle with C&M -->
+  <circle cx="200" cy="65" r="35" fill="#231F20"/>
+  <text x="200" y="75" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="24" fill="#FFFFFF" text-anchor="middle">C&amp;M</text>
+
+  <!-- Barber Shop Text -->
+  <text x="200" y="145" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="44" fill="#FFFFFF" text-anchor="middle">BARBER</text>
+  <text x="200" y="195" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="44" fill="#FFFFFF" text-anchor="middle">SHOP</text>
+
+  <!-- Mustache Base -->
+  <path d="M 110 215 Q 150 245 200 225 Q 250 245 290 215 Q 250 255 200 240 Q 150 255 110 215 Z" fill="#231F20"/>
+
+  <!-- Left Barber Pole -->
+  <g transform="translate(30, 90)">
+    <path d="M 12 0 C 6 0, 0 6, 0 12 L 24 12 C 24 6, 18 0, 12 0 Z" fill="#231F20"/>
+    <rect x="2" y="12" width="20" height="96" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
+    <path d="M 0 108 L 24 108 C 24 114, 18 120, 12 120 C 6 120, 0 114, 0 108 Z" fill="#231F20"/>
+    <polygon points="2,20 22,40 22,50 2,30" fill="#1B365D"/>
+    <polygon points="2,45 22,65 22,75 2,55" fill="#BE2B2D"/>
+    <polygon points="2,70 22,90 22,100 2,80" fill="#1B365D"/>
+  </g>
+
+  <!-- Right Barber Pole -->
+  <g transform="translate(346, 90)">
+    <path d="M 12 0 C 6 0, 0 6, 0 12 L 24 12 C 24 6, 18 0, 12 0 Z" fill="#231F20"/>
+    <rect x="2" y="12" width="20" height="96" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
+    <path d="M 0 108 L 24 108 C 24 114, 18 120, 12 120 C 6 120, 0 114, 0 108 Z" fill="#231F20"/>
+    <polygon points="2,20 22,40 22,50 2,30" fill="#1B365D"/>
+    <polygon points="2,45 22,65 22,75 2,55" fill="#BE2B2D"/>
+    <polygon points="2,70 22,90 22,100 2,80" fill="#1B365D"/>
+  </g>
+</svg>

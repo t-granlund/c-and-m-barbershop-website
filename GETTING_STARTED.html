@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Website Guide — C&amp;M Barber Shop</title>
+  <meta name="robots" content="noindex">
+  <!--
+    ============================================================
+    GUIDE FOR CHARLES & MARIE — please don't delete this file.
+    ============================================================
+    This is a self-contained HTML page — open it by double-clicking
+    on any computer. It works offline. Print it, email it, back it up.
+
+    Design goals (for any future dev editing this file):
+      - Zero jargon on the primary path.
+      - One action per step.
+      - Checkboxes persist in the browser so the owners can resume.
+      - Print-clean (all colors render in B&W).
+      - No external JS, no external CSS, no external anything.
+    ============================================================
+  -->
+  <style>
+    /* ---------- Design tokens (match the live site palette) ---------- */
+    :root {
+      --red:         #BE2B2D;
+      --red-hot:     #D4383A;
+      --red-soft:    #FDECEC;
+      --navy:        #1B365D;
+      --navy-dark:   #0E1F3A;
+      --navy-soft:   #E8F0FC;
+      --white:       #FFFFFF;
+      --off-white:   #F7F7F5;
+      --charcoal:    #231F20;
+      --charcoal-soft: #4A4547;
+      --muted:       #6B6568;
+      --border:      #E5E0DB;
+      --green:       #1F7A44;
+      --green-soft:  #E6F4EB;
+      --amber:       #B8680E;
+      --amber-soft:  #FFF4E0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 1.25rem 1.25rem 4rem;
+      background: var(--off-white);
+      color: var(--charcoal);
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---------- Top banner ---------- */
+    .banner {
+      background: linear-gradient(135deg, var(--red) 0%, #8F1F21 100%);
+      color: var(--white);
+      border-radius: 18px;
+      padding: 1.75rem 1.5rem;
+      margin: 0 0 1.5rem;
+      text-align: center;
+      box-shadow: 0 10px 30px -14px rgba(190, 43, 45, 0.45);
+    }
+    .banner h1 {
+      margin: 0 0 0.3rem;
+      font-size: 1.85rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+    .banner .welcome {
+      margin: 0;
+      font-size: 1.05rem;
+      opacity: 0.95;
+    }
+    .banner .stamp {
+      margin-top: 1rem;
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* ---------- Intro card ---------- */
+    .intro {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      margin: 0 0 1.5rem;
+    }
+    .intro p { margin: 0 0 0.6rem; }
+    .intro p:last-child { margin-bottom: 0; }
+    .intro strong { color: var(--navy); }
+
+    /* ---------- Toolbar ---------- */
+    .toolbar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 0 0 1.5rem;
+    }
+    .toolbar button {
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--charcoal);
+      padding: 0.55rem 0.95rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+    }
+    .toolbar button:hover,
+    .toolbar button:focus-visible {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+      outline: 3px solid var(--red);
+      outline-offset: 2px;
+    }
+    .progress {
+      margin-left: auto;
+      align-self: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* ---------- Path picker ---------- */
+    .paths {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 0 0 2rem;
+    }
+    .path-card {
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 1.25rem 1.25rem 1rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: transform 0.1s, border-color 0.1s;
+    }
+    .path-card:hover,
+    .path-card:focus-visible {
+      border-color: var(--navy);
+      transform: translateY(-2px);
+      outline: none;
+    }
+    .path-card .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      margin-bottom: 0.6rem;
+    }
+    .path-card.easy .tag { background: var(--green-soft); color: var(--green); }
+    .path-card.diy .tag  { background: var(--amber-soft); color: var(--amber); }
+    .path-card h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1.15rem;
+      color: var(--navy);
+    }
+    .path-card p {
+      margin: 0 0 0.35rem;
+      font-size: 0.95rem;
+      color: var(--charcoal-soft);
+    }
+    .path-card .meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    /* ---------- Step card (main building block) ---------- */
+    .step {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 1.5rem 1.5rem 1.25rem;
+      margin: 0 0 1.25rem;
+      box-shadow: 0 4px 16px -10px rgba(27, 54, 93, 0.2);
+      border-left: 6px solid var(--red);
+    }
+    .step.navy { border-left-color: var(--navy); }
+    .step.green { border-left-color: var(--green); }
+    .step.amber { border-left-color: var(--amber); }
+
+    .step-head {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin: 0 0 1rem;
+    }
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 38px;
+      height: 38px;
+      background: var(--red);
+      color: var(--white);
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .step.navy .step-num { background: var(--navy); }
+    .step.green .step-num { background: var(--green); }
+    .step.amber .step-num { background: var(--amber); }
+
+    .step h2 {
+      margin: 0;
+      font-size: 1.3rem;
+      color: var(--navy);
+      letter-spacing: 0.01em;
+      line-height: 1.25;
+    }
+    .step .time {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--muted);
+      background: var(--off-white);
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      margin-left: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .step h3 {
+      color: var(--navy);
+      margin: 1.25rem 0 0.4rem;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .step ol, .step ul { padding-left: 1.5rem; margin: 0.5rem 0 0.75rem; }
+    .step li { margin: 0.35rem 0; }
+    .step p  { margin: 0.5rem 0; }
+
+    /* ---------- Todo checklist (localStorage-persisted) ---------- */
+    .todos {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0;
+    }
+    .todos li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.6rem 0.8rem;
+      border-radius: 10px;
+      margin: 0.2rem 0;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: background 0.1s, border-color 0.1s;
+    }
+    .todos li:hover { background: var(--off-white); }
+    .todos li.done {
+      background: var(--green-soft);
+      border-color: #B7DDC4;
+    }
+    .todos li.done .todo-text {
+      text-decoration: line-through;
+      color: var(--muted);
+    }
+    .todos input[type="checkbox"] {
+      width: 22px;
+      height: 22px;
+      margin: 2px 0 0;
+      cursor: pointer;
+      accent-color: var(--green);
+      flex-shrink: 0;
+    }
+    .todo-text { flex: 1; }
+    .todo-text code { font-size: 0.9em; }
+
+    /* ---------- Callouts ---------- */
+    .callout {
+      padding: 1rem 1.15rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border-left: 4px solid;
+    }
+    .callout.tip     { background: var(--navy-soft); border-color: var(--navy); }
+    .callout.warn    { background: var(--amber-soft); border-color: var(--amber); }
+    .callout.danger  { background: var(--red-soft); border-color: var(--red); }
+    .callout.win     { background: var(--green-soft); border-color: var(--green); }
+    .callout strong  { display: block; margin-bottom: 0.2rem; }
+    .callout.warn strong  { color: var(--amber); }
+    .callout.danger strong { color: var(--red); }
+    .callout.win strong   { color: var(--green); }
+    .callout.tip strong   { color: var(--navy); }
+    .callout p:last-child { margin-bottom: 0; }
+
+    /* ---------- Buttons / links ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--red);
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.75rem 1.3rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin: 0.4rem 0.5rem 0.4rem 0;
+      letter-spacing: 0.03em;
+    }
+    .btn:hover,
+    .btn:focus-visible {
+      background: var(--red-hot);
+      outline: 3px solid var(--navy);
+      outline-offset: 2px;
+    }
+    .btn.secondary {
+      background: transparent;
+      color: var(--navy);
+      border: 2px solid var(--navy);
+    }
+    .btn.secondary:hover,
+    .btn.secondary:focus-visible {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .big-btn {
+      display: block;
+      background: var(--navy);
+      color: var(--white);
+      text-decoration: none;
+      padding: 1.15rem;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin: 0.8rem 0;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .big-btn:hover,
+    .big-btn:focus-visible {
+      background: var(--navy-dark);
+      outline: 3px solid var(--red);
+      outline-offset: 2px;
+    }
+
+    /* ---------- Inline code / file refs ---------- */
+    code {
+      background: #F0EBE3;
+      padding: 0.12rem 0.4rem;
+      border-radius: 4px;
+      font-family: "SF Mono", Menlo, Monaco, Consolas, monospace;
+      font-size: 0.9em;
+      color: var(--charcoal);
+    }
+
+    /* ---------- Script copy-paste block ---------- */
+    .script-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.15rem;
+      margin: 0.75rem 0;
+      font-style: italic;
+      color: var(--charcoal);
+      position: relative;
+    }
+    .script-box::before {
+      content: "💬 Copy &amp; paste this:";
+      display: block;
+      font-style: normal;
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ---------- Collapsible sections ---------- */
+    details {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 1.1rem;
+      margin: 0.5rem 0;
+    }
+    details[open] { padding-bottom: 1rem; }
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--navy);
+      padding: 0.25rem 0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::before {
+      content: "▸";
+      color: var(--red);
+      transition: transform 0.15s;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    details[open] > summary::before { transform: rotate(90deg); }
+    summary:focus-visible {
+      outline: 3px solid var(--red);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* ---------- Tables ---------- */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.93rem;
+    }
+    th {
+      background: var(--navy);
+      color: var(--white);
+      padding: 0.65rem;
+      text-align: left;
+      font-weight: 700;
+    }
+    td {
+      padding: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+    tr:nth-child(even) td { background: var(--off-white); }
+
+    /* ---------- TOC (sidebar feel) ---------- */
+    .toc {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      margin: 0 0 1.5rem;
+    }
+    .toc h2 {
+      margin: 0 0 0.5rem;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    .toc ol {
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+    .toc li { margin: 0.2rem 0; }
+    .toc a { color: var(--navy); text-decoration: none; }
+    .toc a:hover,
+    .toc a:focus-visible { text-decoration: underline; }
+
+    /* ---------- Footer ---------- */
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin: 2.5rem 0 0;
+      padding: 1rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .footer p { margin: 0.25rem 0; }
+
+    /* ---------- Accessibility ---------- */
+    a { color: var(--navy); }
+    a:focus-visible {
+      outline: 3px solid var(--red);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+
+    /* ---------- Mobile ---------- */
+    @media (max-width: 600px) {
+      body { padding: 1rem 0.9rem 3rem; font-size: 16px; }
+      .banner { padding: 1.4rem 1rem; }
+      .banner h1 { font-size: 1.5rem; }
+      .paths { grid-template-columns: 1fr; }
+      .step { padding: 1.2rem 1.1rem 1rem; }
+      .step h2 { font-size: 1.15rem; }
+    }
+
+    /* ---------- Print (Charles likes paper) ---------- */
+    @media print {
+      body { background: var(--white); max-width: 100%; padding: 0; }
+      .toolbar, .path-card { display: none !important; }
+      .step, .intro, .banner, .toc {
+        box-shadow: none;
+        border: 1px solid #bbb;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .banner { background: var(--charcoal) !important; color: var(--white) !important; }
+      details { break-inside: avoid; }
+      details:not([open]) summary { font-weight: 700; }
+      details:not([open]) > *:not(summary) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- BANNER                                                       -->
+<!-- ============================================================ -->
+<header class="banner">
+  <h1>Your C&amp;M Website Guide</h1>
+  <p class="welcome">Everything you need to put your new site online, keep it running, and fix it if it ever breaks. Written for Charles &amp; Marie — no tech background required.</p>
+  <span class="stamp">★ Bookmark this page ★</span>
+</header>
+
+<!-- ============================================================ -->
+<!-- INTRO                                                        -->
+<!-- ============================================================ -->
+<section class="intro">
+  <p><strong>Hi Charles &amp; Marie!</strong> Your website is ready. This page will walk you through three things:</p>
+  <ol>
+    <li><strong>Put it on the internet</strong> — a one-time task, ~30 min or $50 to a pro.</li>
+    <li><strong>Check that it works</strong> — a 5-min phone test.</li>
+    <li><strong>Keep it up to date later</strong> — only when your hours or team change.</li>
+  </ol>
+  <p>Take your time. Have coffee nearby. The checkboxes on this page remember your progress, so you can close the tab and come back later.</p>
+</section>
+
+<!-- ============================================================ -->
+<!-- TOOLBAR                                                      -->
+<!-- ============================================================ -->
+<div class="toolbar" role="toolbar" aria-label="Page tools">
+  <button type="button" onclick="window.print()">🖨️ Print this guide</button>
+  <button type="button" id="reset-btn">♻️ Reset checkboxes</button>
+  <span class="progress" id="progress">0 of 0 complete</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- TABLE OF CONTENTS                                            -->
+<!-- ============================================================ -->
+<nav class="toc" aria-label="Table of contents">
+  <h2>What's in this guide</h2>
+  <ol>
+    <li><a href="#step-1">Find where your domain lives</a></li>
+    <li><a href="#step-2">Pick your path: Pro or DIY</a></li>
+    <li><a href="#step-3">Put the site online</a></li>
+    <li><a href="#step-4">Connect your real web address</a></li>
+    <li><a href="#step-5">Phone-test the live site</a></li>
+    <li><a href="#step-6">Turn on analytics (optional)</a></li>
+    <li><a href="#step-7">How to edit things later</a></li>
+    <li><a href="#step-8">If something goes wrong</a></li>
+  </ol>
+</nav>
+
+<!-- ============================================================ -->
+<!-- STEP 1 — FIND YOUR DOMAIN                                    -->
+<!-- ============================================================ -->
+<section class="step navy" id="step-1">
+  <div class="step-head">
+    <span class="step-num">1</span>
+    <h2>Find where your domain lives <span class="time">~10 min</span></h2>
+  </div>
+
+  <p>Your web address, <code>candmbarbershop.net</code>, is registered with a company that charges you once a year. Before anything else, you need to know <strong>which company</strong>. That company is called your <em>registrar</em>.</p>
+
+  <h3>How to find it</h3>
+  <ol>
+    <li>Open your email (the one you use for business receipts).</li>
+    <li>Search for <code>candmbarbershop.net</code> or the phrase <em>domain renewal</em>.</li>
+    <li>Look at who sent the renewal email. <strong>That's your registrar.</strong></li>
+  </ol>
+
+  <h3>It's almost certainly one of these five</h3>
+  <ul class="todos" data-section="registrar">
+    <li data-id="r-squarespace">
+      <input type="checkbox">
+      <span class="todo-text"><strong>Squarespace</strong> — if you ever used "Google Domains," you're here now. Google Domains shut down in 2023 and every account moved to Squarespace.</span>
+    </li>
+    <li data-id="r-godaddy"><input type="checkbox">
+      <span class="todo-text"><strong>GoDaddy</strong> — green logo, loud ads.</span></li>
+    <li data-id="r-namecheap"><input type="checkbox">
+      <span class="todo-text"><strong>Namecheap</strong> — orange logo.</span></li>
+    <li data-id="r-cloudflare"><input type="checkbox">
+      <span class="todo-text"><strong>Cloudflare</strong> — orange cloud logo.</span></li>
+    <li data-id="r-porkbun"><input type="checkbox">
+      <span class="todo-text"><strong>Porkbun</strong> — yes, that's a real one.</span></li>
+  </ul>
+
+  <div class="callout warn">
+    <strong>⚠️ Don't guess on this step.</strong>
+    <p>If you can't find the email after 15 minutes of looking, text a tech-savvy friend or family member and ask them to help you locate it. This is the #1 step where people get stuck. Get it right before moving on.</p>
+  </div>
+
+  <h3>Also: your current Google Sites page</h3>
+  <p>If your current website is the default Google Sites template, the <em>custom-domain mapping</em> in Google Sites needs to be removed before the new site can go live. If you choose "Pay a Pro" in Step 2, they'll handle this for you. If you go DIY, Cloudflare will walk you through it.</p>
+</section>
+
+<!-- ============================================================ -->
+<!-- STEP 2 — PICK YOUR PATH                                      -->
+<!-- ============================================================ -->
+<section class="step" id="step-2">
+  <div class="step-head">
+    <span class="step-num">2</span>
+    <h2>Pick your path</h2>
+  </div>
+
+  <p>Two honest choices. Neither is wrong. Pick whichever sounds least stressful.</p>
+
+  <div class="paths">
+    <a class="path-card easy" href="#path-pro">
+      <span class="tag">🟢 Recommended</span>
+      <h3>Pay a pro</h3>
+      <p>You hand over the files, someone else does the clicking. You barely touch a computer.</p>
+      <p class="meta">Cost: $30–75 once · Time for you: ~15 min</p>
+    </a>
+    <a class="path-card diy" href="#path-diy">
+      <span class="tag">🟡 DIY</span>
+      <h3>Do it yourself</h3>
+      <p>Free, no ongoing fees, ~30 minutes of following clear steps.</p>
+      <p class="meta">Cost: $0 · Time for you: ~30 min</p>
+    </a>
+  </div>
+
+  <div class="callout tip">
+    <strong>💡 Not sure which to pick?</strong>
+    <p>Can you pay bills online, check email, and follow a numbered list without panicking? <strong>DIY is fine.</strong> Does any of that sound like a lot of work? <strong>Pay a pro.</strong> Your time is worth $50.</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- STEP 3 — DEPLOY                                              -->
+<!-- ============================================================ -->
+<section class="step" id="step-3">
+  <div class="step-head">
+    <span class="step-num">3</span>
+    <h2>Put the site online <span class="time">~30 min</span></h2>
+  </div>
+
+  <!-- ============ PRO PATH ============ -->
+  <h3 id="path-pro">🟢 Path A — Pay a Pro</h3>
+  <p>Post a small job on Fiverr or Upwork. Anyone qualified can do this in under an hour.</p>
+
+  <ul class="todos" data-section="pro">
+    <li data-id="p-zip"><input type="checkbox">
+      <span class="todo-text">Zip up the whole website folder (right-click → Compress / Send to → Compressed folder).</span></li>
+    <li data-id="p-post"><input type="checkbox">
+      <span class="todo-text">Go to <a href="https://www.fiverr.com/search/gigs?query=deploy%20static%20website%20cloudflare%20pages" target="_blank" rel="noopener noreferrer">Fiverr</a> or <a href="https://www.upwork.com/search/services/?q=deploy%20static%20website" target="_blank" rel="noopener noreferrer">Upwork</a> and post a job.</span></li>
+    <li data-id="p-message"><input type="checkbox">
+      <span class="todo-text">Send them the message below, and share your registrar login only <em>after</em> you've hired them (never in the job posting itself).</span></li>
+    <li data-id="p-pay"><input type="checkbox">
+      <span class="todo-text">Budget $30–75. Expect a 24-hour turnaround.</span></li>
+  </ul>
+
+  <div class="script-box">
+    Hi! I have a static website in a zip file. Please deploy it to Cloudflare Pages (free tier) and connect it to my domain <strong>candmbarbershop.net</strong>. If there's an existing Google Sites mapping, please remove it first. I'll share my domain-registrar login securely after we agree on the job. Thank you!
+  </div>
+
+  <a class="btn" href="https://www.fiverr.com/search/gigs?query=deploy%20static%20website%20cloudflare%20pages" target="_blank" rel="noopener noreferrer">Find help on Fiverr →</a>
+  <a class="btn secondary" href="https://www.upwork.com/search/services/?q=deploy%20static%20website" target="_blank" rel="noopener noreferrer">Try Upwork →</a>
+
+  <p style="margin-top:1rem;"><strong>When they're done</strong>, skip ahead to <a href="#step-5">Step 5: Phone-test the live site</a>. You're basically finished.</p>
+
+  <hr style="border:none; border-top:1px dashed var(--border); margin:2rem 0;">
+
+  <!-- ============ DIY PATH ============ -->
+  <h3 id="path-diy">🟡 Path B — Do it yourself (free, ~30 min)</h3>
+
+  <p>You'll use <strong>Cloudflare Pages</strong>. It's free, has no traffic limits, and is made by Cloudflare — a large, reliable company.</p>
+
+  <ul class="todos" data-section="diy-deploy">
+    <li data-id="d-signup"><input type="checkbox">
+      <span class="todo-text">Go to <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">dash.cloudflare.com/sign-up</a> and create a free account. Use your business email. Save the password somewhere safe.</span></li>
+    <li data-id="d-verify"><input type="checkbox">
+      <span class="todo-text">Check your email and click the verification link they send you.</span></li>
+    <li data-id="d-nav"><input type="checkbox">
+      <span class="todo-text">In the Cloudflare dashboard, click <strong>Workers &amp; Pages</strong> in the left sidebar.</span></li>
+    <li data-id="d-create"><input type="checkbox">
+      <span class="todo-text">Click <strong>Create</strong> → <strong>Pages</strong> → <strong>Upload assets</strong>.</span></li>
+    <li data-id="d-name"><input type="checkbox">
+      <span class="todo-text">Name your project <code>cm-barber-shop</code>. Click <strong>Create project</strong>.</span></li>
+    <li data-id="d-drag"><input type="checkbox">
+      <span class="todo-text">Drag your website folder onto the upload box. Wait about 30 seconds for it to finish.</span></li>
+    <li data-id="d-live"><input type="checkbox">
+      <span class="todo-text">Your site is live at something like <code>cm-barber-shop.pages.dev</code>. <strong>Copy that address and text it to yourself</strong> — you'll want it handy.</span></li>
+  </ul>
+
+  <a class="big-btn" href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">Start here: Create a Cloudflare account →</a>
+
+  <div class="callout win">
+    <strong>🎉 Celebrate!</strong>
+    <p>That <code>.pages.dev</code> address works <em>right now</em> on any phone or computer. Text it to a friend and make sure everything looks good before you point your real web address at it.</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- STEP 4 — CONNECT DOMAIN                                      -->
+<!-- ============================================================ -->
+<section class="step" id="step-4">
+  <div class="step-head">
+    <span class="step-num">4</span>
+    <h2>Connect your real web address <span class="time">~15 min + waiting</span></h2>
+  </div>
+
+  <p>DIY only — if you paid a pro, they already did this.</p>
+
+  <p>Right now your site lives at a free <code>.pages.dev</code> address. This step points <code>candmbarbershop.net</code> at it.</p>
+
+  <ul class="todos" data-section="diy-domain">
+    <li data-id="c-open"><input type="checkbox">
+      <span class="todo-text">Back in your Cloudflare Pages project, click the <strong>Custom domains</strong> tab.</span></li>
+    <li data-id="c-add"><input type="checkbox">
+      <span class="todo-text">Click <strong>Set up a custom domain</strong> → type <code>candmbarbershop.net</code> → <strong>Continue</strong>.</span></li>
+    <li data-id="c-add-www"><input type="checkbox">
+      <span class="todo-text">Repeat to also add <code>www.candmbarbershop.net</code>.</span></li>
+    <li data-id="c-instructions"><input type="checkbox">
+      <span class="todo-text">Cloudflare will show you one of two things: a <strong>CNAME record</strong> or a pair of <strong>nameservers</strong>. Write down whatever it shows you — you'll paste this at your registrar next.</span></li>
+    <li data-id="c-registrar"><input type="checkbox">
+      <span class="todo-text">Open a new tab and log into your registrar (from Step 1). Find the <strong>DNS</strong> or <strong>Nameservers</strong> section.</span></li>
+    <li data-id="c-paste"><input type="checkbox">
+      <span class="todo-text">Paste in what Cloudflare told you. Save.</span></li>
+    <li data-id="c-wait"><input type="checkbox">
+      <span class="todo-text">Wait 5–60 minutes. Your real web address will start working on its own.</span></li>
+  </ul>
+
+  <div class="callout warn">
+    <strong>⚠️ Padlock icon may be missing at first</strong>
+    <p>For the first hour or so, your browser might say "not secure" or show a certificate warning. That's normal — the padlock takes a little time to appear. Wait 30 minutes and check again. It always arrives.</p>
+  </div>
+
+  <div class="callout danger">
+    <strong>🚨 Don't panic if it seems broken</strong>
+    <p>Propagation (the fancy word for "the internet learning your new address") can take up to an hour. If it's not working after 2 hours, clear your browser cache or try on a different phone. Still stuck? Go to <a href="#step-8">Step 8</a>.</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- STEP 5 — TEST                                                -->
+<!-- ============================================================ -->
+<section class="step green" id="step-5">
+  <div class="step-head">
+    <span class="step-num">5</span>
+    <h2>Phone-test the live site <span class="time">~5 min</span></h2>
+  </div>
+
+  <p>Open the site on your phone (not a computer — your customers are on phones) and check each of these. If any one fails, note it and text Tyler.</p>
+
+  <ul class="todos" data-section="test">
+    <li data-id="t-loads"><input type="checkbox">
+      <span class="todo-text">The site loads in under 3 seconds.</span></li>
+    <li data-id="t-logo"><input type="checkbox">
+      <span class="todo-text">The C&amp;M logo appears at the top.</span></li>
+    <li data-id="t-cta"><input type="checkbox">
+      <span class="todo-text">A red <strong>"Pick Your Stylist"</strong> button is stuck to the bottom of the screen as you scroll.</span></li>
+    <li data-id="t-call"><input type="checkbox">
+      <span class="todo-text">Tap the <strong>Call</strong> button on a stylist card → your phone offers to call.</span></li>
+    <li data-id="t-text"><input type="checkbox">
+      <span class="todo-text">Tap the <strong>Text</strong> button on a stylist card → your Messages app opens.</span></li>
+    <li data-id="t-open"><input type="checkbox">
+      <span class="todo-text">During business hours, a <strong>green pulsing "Open now"</strong> dot appears near the top.</span></li>
+    <li data-id="t-map"><input type="checkbox">
+      <span class="todo-text">The map shows 116 College Road in Pineville, MO.</span></li>
+    <li data-id="t-directions"><input type="checkbox">
+      <span class="todo-text">Tap <strong>Get Directions</strong> → your Maps app opens with the shop address.</span></li>
+  </ul>
+
+  <div class="callout win">
+    <strong>✅ All checked?</strong>
+    <p>Your site is officially live and working. Celebrate. Tell Tyler. Post the link on Facebook. You did it.</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- STEP 6 — ANALYTICS                                           -->
+<!-- ============================================================ -->
+<section class="step navy" id="step-6">
+  <div class="step-head">
+    <span class="step-num">6</span>
+    <h2>Turn on analytics <span class="time">~5 min · optional</span></h2>
+  </div>
+
+  <p>Want to know how many people visit your site each week? Cloudflare gives you a free, private analytics dashboard. No cookies, no pop-up banners, no selling data.</p>
+
+  <ul class="todos" data-section="analytics">
+    <li data-id="a-open"><input type="checkbox">
+      <span class="todo-text">Log in at <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer">dash.cloudflare.com</a>.</span></li>
+    <li data-id="a-nav"><input type="checkbox">
+      <span class="todo-text">Click <strong>Analytics &amp; Logs</strong> → <strong>Web Analytics</strong>.</span></li>
+    <li data-id="a-add"><input type="checkbox">
+      <span class="todo-text">Click <strong>Add a site</strong> → enter <code>candmbarbershop.net</code>.</span></li>
+    <li data-id="a-token"><input type="checkbox">
+      <span class="todo-text">Cloudflare gives you a <strong>token</strong> — a long string of letters and numbers. Copy it.</span></li>
+    <li data-id="a-paste"><input type="checkbox">
+      <span class="todo-text">Open <code>index.html</code> in VS Code (see Step 7). Press <kbd>Ctrl+F</kbd> (Windows) or <kbd>⌘+F</kbd> (Mac) and search for <code>REPLACE_WITH_TOKEN</code>. Replace it with the token. Save.</span></li>
+    <li data-id="a-redeploy"><input type="checkbox">
+      <span class="todo-text">Re-upload the folder to Cloudflare Pages (drag-and-drop again, same as Step 3).</span></li>
+  </ul>
+
+  <div class="callout tip">
+    <strong>💡 You can skip this step and come back later.</strong>
+    <p>The website works fine either way. Analytics just let you see traffic counts and which pages people visit. Until you paste the token, the code is harmless and does nothing.</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- STEP 7 — EDIT LATER                                          -->
+<!-- ============================================================ -->
+<section class="step amber" id="step-7">
+  <div class="step-head">
+    <span class="step-num">7</span>
+    <h2>How to edit things later</h2>
+  </div>
+
+  <div class="callout danger">
+    <strong>🚨 Critical — use the right editor</strong>
+    <p><strong>Download VS Code first:</strong> <a href="https://code.visualstudio.com" target="_blank" rel="noopener noreferrer">code.visualstudio.com</a>. It's free, made by Microsoft, and doesn't corrupt files.</p>
+    <p><strong>Do NOT use TextEdit</strong> (Mac) or regular <strong>Notepad</strong> (Windows). They secretly change the file format and will break the website. This is the #1 cause of broken small-business sites.</p>
+    <p>On Windows, <a href="https://notepad-plus-plus.org" target="_blank" rel="noopener noreferrer">Notepad++</a> is also safe and free.</p>
+  </div>
+
+  <p>After any edit, you have to <strong>re-upload the whole folder</strong> to Cloudflare Pages (drag-and-drop, same as Step 3). Cloudflare keeps the old version until the new upload finishes, so you can't break the live site mid-upload.</p>
+
+  <details>
+    <summary>📞 A stylist's phone number changed</summary>
+    <ol>
+      <li>Open <code>index.html</code> in VS Code.</li>
+      <li>Press <kbd>Ctrl+F</kbd> / <kbd>⌘+F</kbd> and search for the old number.</li>
+      <li>Change it in <strong>every</strong> place it appears — the visible text, the <code>tel:</code> link, and the <code>sms:</code> link. Usually 3 places per stylist.</li>
+      <li>Save. Re-upload the folder to Cloudflare Pages.</li>
+    </ol>
+    <p style="margin-top:0.5rem;"><em>Feels risky? Text Tyler a screenshot of the old + new number. 10-minute fix for someone who knows HTML.</em></p>
+  </details>
+
+  <details>
+    <summary>📅 Your hours changed</summary>
+    <ol>
+      <li>In <code>index.html</code>, search for <strong>Shop Hours</strong> and update the visible times.</li>
+      <li>Also update the <code>HOURS</code> table near the top of <code>script.js</code> — this is what powers the live "Open now" dot.</li>
+      <li>Save both files. Re-upload.</li>
+    </ol>
+    <p style="margin-top:0.5rem;"><em>If you only update <code>index.html</code> and forget <code>script.js</code>, the "Open now" dot will be wrong. When in doubt, text Tyler.</em></p>
+  </details>
+
+  <details>
+    <summary>👋 A stylist left, or a new one joined</summary>
+    <p>Honestly: <strong>pay a pro $20 on Fiverr</strong> or <strong>text Tyler a photo of the business card</strong>. This is the one edit where the copy-paste is finicky enough that hiring help saves frustration.</p>
+    <p>If you're determined to do it yourself: find an existing stylist's card block in <code>index.html</code> (search for a name you know), copy the whole <code>&lt;article&gt;...&lt;/article&gt;</code> block, paste it next to the original, and change the name, role, initials, and phone number. Save. Re-upload.</p>
+  </details>
+
+  <details>
+    <summary>📸 Adding a photo</summary>
+    <ol>
+      <li>Put the photo file (JPG or PNG) in the same folder as the other files. <strong>Keep it under 500 KB</strong> so the site loads fast on phones — use the free tool at <a href="https://squoosh.app" target="_blank" rel="noopener noreferrer">squoosh.app</a> to shrink it.</li>
+      <li>In <code>index.html</code>, add: <code>&lt;img src="your-photo.jpg" alt="Describe the photo in words"&gt;</code> wherever you want it to appear.</li>
+      <li>Save. Re-upload.</li>
+    </ol>
+    <p><strong>Top-priority photos to eventually add</strong> (per your brand directives):</p>
+    <ul>
+      <li>A warm, brightly-lit shot of the shop interior.</li>
+      <li>One photo featuring a woman or child in the chair (makes it crystal-clear everyone's welcome).</li>
+      <li>Individual headshots of each stylist.</li>
+    </ul>
+  </details>
+
+  <h3>File reference</h3>
+  <table>
+    <thead>
+      <tr><th>File</th><th>What it does</th><th>Touch it if…</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>index.html</code></td><td>All the words and page structure</td><td>Text, hours, staff, address</td></tr>
+      <tr><td><code>script.js</code></td><td>The "Open now" live clock</td><td>Your hours change</td></tr>
+      <tr><td><code>styles.css</code></td><td>Colors, fonts, main layout</td><td>Leave alone unless brave</td></tr>
+      <tr><td><code>components.css</code></td><td>Section-level styling</td><td>Leave alone unless brave</td></tr>
+      <tr><td><code>cm-logo.svg</code></td><td>Your C&amp;M logo</td><td>Only if the logo itself changes</td></tr>
+      <tr><td><code>fonts/</code></td><td>Website typefaces (Oswald + Open Sans)</td><td><strong>Never touch this folder.</strong></td></tr>
+      <tr><td><code>_headers</code></td><td>Security settings</td><td><strong>Never delete this file.</strong></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============================================================ -->
+<!-- STEP 8 — DISASTER RECOVERY                                   -->
+<!-- ============================================================ -->
+<section class="step" id="step-8">
+  <div class="step-head">
+    <span class="step-num">8</span>
+    <h2>If something goes wrong</h2>
+  </div>
+
+  <p>Take a breath. Your files are backed up in more than one place. The live site can always be restored.</p>
+
+  <h3>In order, try these</h3>
+
+  <ol>
+    <li><strong>Text Tyler.</strong> He built this, he can usually fix it in 10 minutes.</li>
+    <li><strong>Post a Fiverr job.</strong> Title it "Fix my Cloudflare Pages site." Budget $30–75. Usually fixed within 24 hours. Attach your website folder.</li>
+    <li><strong>Restore from backup.</strong> Your 6 files are safe in at least 3 places: this folder, your email, and the GitHub repo Tyler set up. Any web developer can redeploy the site in 30 minutes from any of those copies.</li>
+  </ol>
+
+  <h3>Common problems &amp; quick fixes</h3>
+
+  <details>
+    <summary>The site is showing the wrong information</summary>
+    <p>The Cloudflare Pages dashboard keeps every version you've ever uploaded. Go to your project → <strong>Deployments</strong> tab → find the last known good version → click the three-dot menu → <strong>Rollback to this deployment</strong>. You're back to the old version in 30 seconds.</p>
+  </details>
+
+  <details>
+    <summary>"Certificate expired" or "not secure" warning</summary>
+    <p>Cloudflare renews certificates automatically every 90 days. If you ever see an actual expired warning, it almost always means the custom domain setup from Step 4 got disconnected. Remove the custom domain in the Cloudflare Pages dashboard and re-add it — this triggers a fresh certificate within 15 minutes.</p>
+  </details>
+
+  <details>
+    <summary>The domain expired / stopped working</summary>
+    <p>Log into your registrar (Step 1) and renew. <strong>If you're within 30 days of expiry</strong>, a regular renewal works. <strong>After 30 days</strong>, there's a redemption fee (~$80) and you have to act fast before it's released to the public.</p>
+    <p><strong>Prevention:</strong> turn on <strong>auto-renew</strong> at your registrar. This is the single most important "forget it" step.</p>
+  </details>
+
+  <details>
+    <summary>Your Cloudflare account got locked or deleted</summary>
+    <ol>
+      <li>Create a new free Cloudflare account.</li>
+      <li>Drag your website folder onto Cloudflare Pages Direct Upload.</li>
+      <li>Re-add the custom domain (Step 4).</li>
+      <li>At your registrar, update the DNS/nameservers to the new Cloudflare settings.</li>
+    </ol>
+    <p>Total time: ~30 minutes. No files are lost.</p>
+  </details>
+
+  <h3>The credential list (write this on paper, keep in the shop's file cabinet)</h3>
+
+  <ul class="todos" data-section="recovery">
+    <li data-id="bk-domain"><input type="checkbox">
+      <span class="todo-text">Domain registrar name + email + password</span></li>
+    <li data-id="bk-cf"><input type="checkbox">
+      <span class="todo-text">Cloudflare account email + password</span></li>
+    <li data-id="bk-backup"><input type="checkbox">
+      <span class="todo-text">A copy of the website folder on a USB drive, labeled <code>cm-website-backup</code> with today's date</span></li>
+    <li data-id="bk-email"><input type="checkbox">
+      <span class="todo-text">A zip of the website folder emailed to yourself</span></li>
+    <li data-id="bk-autorenew"><input type="checkbox">
+      <span class="todo-text">Auto-renew turned on at your registrar</span></li>
+  </ul>
+
+  <div class="callout danger">
+    <strong>🚨 Don't store passwords in a shared Google Doc</strong>
+    <p>Write them on paper. Put the paper in a locked filing cabinet at the shop. Only people you trust should know where. This is more secure than almost any digital option for a business your size.</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- QUICK REFERENCE (always visible at bottom)                   -->
+<!-- ============================================================ -->
+<section class="step navy">
+  <div class="step-head">
+    <span class="step-num">★</span>
+    <h2>The one-page cheat sheet</h2>
+  </div>
+
+  <h3>Business facts that must stay accurate</h3>
+  <ul>
+    <li><strong>Address:</strong> 116 College Road #107, Pineville, MO 64856</li>
+    <li><strong>Hours:</strong> Mon–Fri 8:00–5:00 · Sat 8:00–12:00 · Sun closed</li>
+    <li><strong>Team:</strong> 6 stylists · 80+ years combined experience</li>
+    <li><strong>Founded:</strong> 2005 (in Bella Vista, AR · relocated June 2025)</li>
+    <li><strong>Tagline:</strong> <em>Classic service for the modern family. Walk-ins always welcome.</em></li>
+  </ul>
+
+  <h3>Where everything lives</h3>
+  <ul>
+    <li><strong>Website hosting:</strong> Cloudflare Pages (free)</li>
+    <li><strong>Domain:</strong> <code>candmbarbershop.net</code> — registered at your registrar (Step 1)</li>
+    <li><strong>Website files:</strong> the folder this document is in</li>
+    <li><strong>Analytics (optional):</strong> Cloudflare → Analytics &amp; Logs → Web Analytics</li>
+  </ul>
+
+  <h3>The four rules</h3>
+  <ol>
+    <li>Never delete <code>_headers</code>.</li>
+    <li>Never edit files with TextEdit or Notepad — only VS Code or Notepad++.</li>
+    <li>Keep auto-renew on at your registrar.</li>
+    <li>Keep a USB backup of the website folder.</li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER                                                       -->
+<!-- ============================================================ -->
+<footer class="footer">
+  <p>Made with ❤️ for Charles &amp; Marie at C&amp;M Barber Shop &amp; Family Hair.</p>
+  <p><em>Rebuild v2 — self-hosted fonts, tightened security, analytics-ready.</em></p>
+  <p>Questions? Text Tyler.</p>
+</footer>
+
+<!-- ============================================================ -->
+<!-- PROGRESS PERSISTENCE (tiny vanilla-JS)                       -->
+<!-- ============================================================ -->
+<script>
+(function () {
+  "use strict";
+
+  // Persist todo checkbox state in localStorage so owners can close
+  // and resume. Key: cm-guide-todos. Value: JSON { id: true }.
+  var STORAGE_KEY = "cm-guide-todos-v2";
+
+  function loadState() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveState(state) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (e) {
+      /* storage disabled — state just won't persist; that's fine. */
+    }
+  }
+
+  var state = loadState();
+  var todos = document.querySelectorAll(".todos li[data-id]");
+
+  function updateProgress() {
+    var total = todos.length;
+    var done = 0;
+    todos.forEach(function (li) { if (li.classList.contains("done")) done++; });
+    var el = document.getElementById("progress");
+    if (el) {
+      el.textContent = done + " of " + total + " complete";
+      if (done === total && total > 0) {
+        el.textContent += " 🎉";
+      }
+    }
+  }
+
+  todos.forEach(function (li) {
+    var id = li.getAttribute("data-id");
+    var cb = li.querySelector('input[type="checkbox"]');
+    if (!cb) return;
+
+    // Restore state
+    if (state[id]) {
+      cb.checked = true;
+      li.classList.add("done");
+    }
+
+    // Allow the whole row to be clickable (but don't double-fire on the
+    // checkbox itself or on links inside the label).
+    li.addEventListener("click", function (e) {
+      if (e.target.tagName === "A" || e.target.tagName === "INPUT") return;
+      cb.checked = !cb.checked;
+      cb.dispatchEvent(new Event("change", { bubbles: true }));
+    });
+
+    cb.addEventListener("change", function () {
+      if (cb.checked) {
+        li.classList.add("done");
+        state[id] = true;
+      } else {
+        li.classList.remove("done");
+        delete state[id];
+      }
+      saveState(state);
+      updateProgress();
+    });
+  });
+
+  updateProgress();
+
+  // Reset button
+  var resetBtn = document.getElementById("reset-btn");
+  if (resetBtn) {
+    resetBtn.addEventListener("click", function () {
+      if (!confirm("Clear every checkbox on this page?")) return;
+      state = {};
+      saveState(state);
+      todos.forEach(function (li) {
+        var cb = li.querySelector('input[type="checkbox"]');
+        if (cb) cb.checked = false;
+        li.classList.remove("done");
+      });
+      updateProgress();
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

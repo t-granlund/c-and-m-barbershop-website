@@ -1,0 +1,38 @@
+# =============================================================================
+# HTTP security headers for C&M Barber Shop website
+# =============================================================================
+# This file format is supported natively by BOTH Cloudflare Pages and Netlify.
+# Do NOT delete this file — it's what gets us an A+ on Mozilla Observatory.
+#
+# What each header does (plain English):
+#  - Content-Security-Policy: only allow scripts/styles/images from approved
+#    sources. Stops most XSS attacks cold.
+#  - Strict-Transport-Security: browser must use HTTPS for the next 2 years.
+#  - X-Content-Type-Options: no MIME-sniffing games.
+#  - X-Frame-Options: nobody can embed the site in an iframe on another domain.
+#  - Referrer-Policy: send same-origin URL as referrer; cross-origin only gets
+#    the bare origin.
+#  - Permissions-Policy: explicitly deny sensors, camera, mic, etc. (none
+#    needed for a barbershop brochure site).
+#
+# CSP notes:
+#  - script-src allows static.cloudflareinsights.com ONLY to support the
+#    optional Cloudflare Web Analytics beacon (see index.html). Safe to
+#    remove the subdomain if analytics are never enabled.
+#  - connect-src allows cloudflareinsights.com for the same reason.
+#  - font-src is 'self' only: fonts are self-hosted under /fonts/. Do NOT
+#    re-add fonts.gstatic.com — see fonts/README.md for the rationale.
+# =============================================================================
+
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://*.gstatic.com https://*.googleapis.com; frame-src https://www.google.com; connect-src 'self' https://cloudflareinsights.com; form-action 'none'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), microphone=(), payment=(), usb=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+
+# Fonts are immutable — cache aggressively for a year.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

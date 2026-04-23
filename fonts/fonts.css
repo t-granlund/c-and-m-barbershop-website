@@ -1,0 +1,33 @@
+/* =========================================================
+   Self-hosted webfonts — latin subset only.
+   Generated from Google Fonts CSS2 API; serves modern variable
+   WOFF2 files directly from our own origin.
+   Why: C-and-M-Agent Directives.md §4 + research §3:
+     - Core Web Vitals (eliminate 3 third-party round-trips)
+     - Privacy (avoid transmitting visitor IP to Google; 2022
+       Munich LG 3 O 17493/20 ruling)
+     - CSP tightening (remove fonts.googleapis.com / gstatic.com
+       from _headers)
+   Licenses: both families are SIL Open Font License, redistributable.
+   ========================================================= */
+
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('fonts/open-sans-variable.woff2') format('woff2-variations'),
+       url('fonts/open-sans-variable.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('fonts/oswald-variable.woff2') format('woff2-variations'),
+       url('fonts/oswald-variable.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
