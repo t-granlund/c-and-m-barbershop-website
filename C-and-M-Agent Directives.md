@@ -7,7 +7,7 @@
 > - **`./research/`** — evidence-based findings on 2026 conversion, WCAG 2.2 AA, privacy,
 >   local SEO schema, static hosting options, and non-technical handoff patterns.
 > - **The current implementation** (`index.html`, `styles.css`, `components.css`, `script.js`,
->   `GETTING_STARTED.html`, `QUICK_START.txt`, `README.md`) — the working, shipped reality
+>   `guide/index.html`, `QUICK_START.txt`, `README.md`) — the working, shipped reality
 >   these directives should evolve, not erase.
 >
 > Where this doc disagrees with the research or the current site on a **matter of fact**

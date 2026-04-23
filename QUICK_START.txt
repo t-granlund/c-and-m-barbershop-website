@@ -1,7 +1,8 @@
 C & M BARBER SHOP -- WEBSITE QUICK START   (tape to the mirror!)
 ================================================================
 
-FOR THE FULL FRIENDLY VERSION: open GETTING_STARTED.html in a browser.
+FOR THE FULL FRIENDLY VERSION: open guide/index.html in a browser
+(or visit /guide/ on the live site).
 This .txt is the one-page cheat-sheet version.
 
 YOUR WEBSITE FILES (keep them all together in one folder):

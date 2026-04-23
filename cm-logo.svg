@@ -1,35 +1,76 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%" role="img" aria-label="C&amp;M Barber Shop logo">
-  <!-- Red Oval Background -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" width="100%" height="100%" role="img" aria-label="C&amp;M Barber Shop logo">
+  <!-- =========================================================
+       C&M Barber Shop brand mark
+       ---------------------------------------------------------
+       Draw order (bottom → top):
+         1. Mustache    — sits behind everything; oval + poles mask it
+         2. Left pole   — overlaps oval horizontally; oval masks inner edge
+         3. Right pole  — mirror of left
+         4. Red oval    — masks pole inner edges and mustache top
+         5. C&M circle + wordmark
+
+       Key coordinates:
+         Oval:  cx=200 cy=150 rx=140 ry=85  (spans x 60..340, y 65..235)
+         Poles: cap width 36, total height 210, at translate(40, 50)
+                and translate(324, 50). Outer edges at x=40 / x=360.
+                Poles extend 15px above and 25px below the oval.
+         Mustache: horizontal span x=84..316, narrower than the poles
+                on purpose — tips curl up in the triangular gap between
+                the oval's curving bottom edge and the poles' outer
+                flanks, so both the pole bottom caps AND the mustache
+                tips stay fully visible.
+       ========================================================= -->
+
+  <!-- 1. Mustache (drawn FIRST, behind everything) -->
+  <path d="M 84 234
+           C 80 212, 110 204, 138 222
+           Q 168 240, 198 230
+           Q 200 234, 202 230
+           Q 232 240, 262 222
+           C 290 204, 320 212, 316 234
+           C 312 262, 284 280, 256 270
+           Q 228 256, 200 266
+           Q 172 256, 144 270
+           C 116 280, 88 262, 84 234 Z"
+        fill="#231F20"/>
+
+  <!-- 2. Left barber pole — outer edge at x=40, inner edge at x=76 -->
+  <g transform="translate(40, 50)">
+    <path d="M 18 0 C 8 0, 0 8, 0 18 L 36 18 C 36 8, 28 0, 18 0 Z" fill="#231F20"/>
+    <rect x="2" y="18" width="32" height="174" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
+    <polygon points="2,28  34,58  34,70 2,40"    fill="#1B365D"/>
+    <polygon points="2,58  34,88  34,100 2,70"   fill="#BE2B2D"/>
+    <polygon points="2,88  34,118 34,130 2,100"  fill="#1B365D"/>
+    <polygon points="2,118 34,148 34,160 2,130"  fill="#BE2B2D"/>
+    <polygon points="2,148 34,178 34,190 2,160"  fill="#1B365D"/>
+    <polygon points="2,178 34,190 34,192 2,188"  fill="#BE2B2D"/>
+    <path d="M 0 192 L 36 192 C 36 202, 28 210, 18 210 C 8 210, 0 202, 0 192 Z" fill="#231F20"/>
+  </g>
+
+  <!-- 3. Right barber pole (mirror) -->
+  <g transform="translate(324, 50)">
+    <path d="M 18 0 C 8 0, 0 8, 0 18 L 36 18 C 36 8, 28 0, 18 0 Z" fill="#231F20"/>
+    <rect x="2" y="18" width="32" height="174" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
+    <polygon points="2,28  34,58  34,70 2,40"    fill="#1B365D"/>
+    <polygon points="2,58  34,88  34,100 2,70"   fill="#BE2B2D"/>
+    <polygon points="2,88  34,118 34,130 2,100"  fill="#1B365D"/>
+    <polygon points="2,118 34,148 34,160 2,130"  fill="#BE2B2D"/>
+    <polygon points="2,148 34,178 34,190 2,160"  fill="#1B365D"/>
+    <polygon points="2,178 34,190 34,192 2,188"  fill="#BE2B2D"/>
+    <path d="M 0 192 L 36 192 C 36 202, 28 210, 18 210 C 8 210, 0 202, 0 192 Z" fill="#231F20"/>
+  </g>
+
+  <!-- 4. Red oval — on top of mustache and poles -->
   <ellipse cx="200" cy="150" rx="140" ry="85" fill="#BE2B2D"/>
 
-  <!-- Top Black Circle with C&M -->
+  <!-- 5. C&M black circle -->
   <circle cx="200" cy="65" r="35" fill="#231F20"/>
-  <text x="200" y="75" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="24" fill="#FFFFFF" text-anchor="middle">C&amp;M</text>
+  <text x="200" y="75" font-family="'Helvetica Neue', Arial, sans-serif"
+        font-weight="900" font-size="24" fill="#FFFFFF" text-anchor="middle">C&amp;M</text>
 
-  <!-- Barber Shop Text -->
-  <text x="200" y="145" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="44" fill="#FFFFFF" text-anchor="middle">BARBER</text>
-  <text x="200" y="195" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="44" fill="#FFFFFF" text-anchor="middle">SHOP</text>
-
-  <!-- Mustache Base -->
-  <path d="M 110 215 Q 150 245 200 225 Q 250 245 290 215 Q 250 255 200 240 Q 150 255 110 215 Z" fill="#231F20"/>
-
-  <!-- Left Barber Pole -->
-  <g transform="translate(30, 90)">
-    <path d="M 12 0 C 6 0, 0 6, 0 12 L 24 12 C 24 6, 18 0, 12 0 Z" fill="#231F20"/>
-    <rect x="2" y="12" width="20" height="96" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
-    <path d="M 0 108 L 24 108 C 24 114, 18 120, 12 120 C 6 120, 0 114, 0 108 Z" fill="#231F20"/>
-    <polygon points="2,20 22,40 22,50 2,30" fill="#1B365D"/>
-    <polygon points="2,45 22,65 22,75 2,55" fill="#BE2B2D"/>
-    <polygon points="2,70 22,90 22,100 2,80" fill="#1B365D"/>
-  </g>
-
-  <!-- Right Barber Pole -->
-  <g transform="translate(346, 90)">
-    <path d="M 12 0 C 6 0, 0 6, 0 12 L 24 12 C 24 6, 18 0, 12 0 Z" fill="#231F20"/>
-    <rect x="2" y="12" width="20" height="96" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
-    <path d="M 0 108 L 24 108 C 24 114, 18 120, 12 120 C 6 120, 0 114, 0 108 Z" fill="#231F20"/>
-    <polygon points="2,20 22,40 22,50 2,30" fill="#1B365D"/>
-    <polygon points="2,45 22,65 22,75 2,55" fill="#BE2B2D"/>
-    <polygon points="2,70 22,90 22,100 2,80" fill="#1B365D"/>
-  </g>
+  <!-- 6. BARBER SHOP wordmark -->
+  <text x="200" y="145" font-family="'Helvetica Neue', Arial, sans-serif"
+        font-weight="900" font-size="44" fill="#FFFFFF" text-anchor="middle">BARBER</text>
+  <text x="200" y="195" font-family="'Helvetica Neue', Arial, sans-serif"
+        font-weight="900" font-size="44" fill="#FFFFFF" text-anchor="middle">SHOP</text>
 </svg>

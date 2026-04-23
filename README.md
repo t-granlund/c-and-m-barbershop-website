@@ -11,9 +11,14 @@ Built by Tyler, on a handshake.
 
 ## 👀 Live preview
 
-**➡️ https://t-granlund.github.io/c-and-m-barbershop-website/**
+Two separate URLs on the same GitHub Pages deployment:
 
-This GitHub Pages URL is a **preview / demo** so Charles &amp; Marie can see
+| | URL | For |
+|---|---|---|
+| 🏪 **Site preview** | **https://t-granlund.github.io/c-and-m-barbershop-website/** | Charles &amp; Marie to see what their future website looks like |
+| 📖 **Owner guide** | **https://t-granlund.github.io/c-and-m-barbershop-website/guide/** | The friendly step-by-step deployment walkthrough |
+
+The GitHub Pages deployment is a **preview / demo** so Charles &amp; Marie can see
 the site before approving the real launch. It is explicitly **not** the
 intended production host.
 
@@ -34,7 +39,7 @@ intended production host.
 
 ### The production plan
 
-When Charles &amp; Marie approve, the owner-facing `GETTING_STARTED.html`
+When Charles &amp; Marie approve, the owner-facing `guide/index.html`
 walks them (or a $30–75 Fiverr pro) through deploying the exact same
 repo to **Cloudflare Pages**, which:
 
@@ -59,7 +64,7 @@ live storefront.**
 | `cm-logo.svg`            | C&M brand mark (red oval + navy poles + mustache)       |
 | `fonts/`                 | Self-hosted Oswald + Open Sans variable WOFF2 (~63 KB)  |
 | `_headers`               | HTTP security headers (CSP, HSTS, etc.) — **do not delete** |
-| `GETTING_STARTED.html`   | Non-technical deployment guide for Charles & Marie      |
+| `guide/index.html`       | Non-technical deployment guide for Charles & Marie (self-contained, served at `/guide/`) |
 | `QUICK_START.txt`        | One-page printable checklist (≤55 lines)                |
 | `C-and-M-Agent Directives.md` | Brand / vision / future-state directives           |
 | `LICENSE`                | Copyright notice — site content is not freely reusable  |
@@ -121,7 +126,7 @@ visitor → tap Call or Text on a stylist's card → booked.
 **Primary recommendation: Cloudflare Pages** (free, unlimited bandwidth,
 unlimited requests, auto HTTPS, supports our `_headers` file).
 
-See `GETTING_STARTED.html` for the owner-facing walkthrough.
+See `guide/index.html` (served at `/guide/`) for the owner-facing walkthrough.
 
 ### Dev-facing quick deploy
 
@@ -147,7 +152,7 @@ Deploy: `index.html`, `styles.css`, `components.css`, `script.js`,
 `robots.txt`, `sitemap.xml`.
 
 **Exclude:** `research/`, `README.md`, `C-and-M-Agent Directives.md`,
-`LICENSE`, `GETTING_STARTED.html` (owner-only), `QUICK_START.txt` (owner-only),
+`LICENSE`, `guide/` (owner-only — optional to deploy), `QUICK_START.txt` (owner-only),
 `.gitignore`, `.git/`.
 
 ---
@@ -315,7 +320,7 @@ cabinet — not in a shared Google Doc):
 ## 📚 Related docs
 
 - **`C-and-M-Agent Directives.md`** — brand, vision, future-state directives
-- **`GETTING_STARTED.html`** — owner-facing deploy guide
+- **`guide/index.html`** — owner-facing deploy guide (served at `/guide/`)
 - **`QUICK_START.txt`** — one-page printable checklist
 - **`research/`** — architecture, conversion, a11y, privacy research packs
   (excluded from deployment via `.gitignore`)
