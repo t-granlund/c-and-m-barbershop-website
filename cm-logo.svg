@@ -8,6 +8,10 @@
          4. C &amp; M black circle
          5. BARBER SHOP wordmark
          6. Mustache — drawn LAST so it sits ON TOP, clearly visible
+
+       v2 fix: Mustache rebuilt as two separate half-paths (left + right)
+       to avoid self-intersecting spiral tips that caused rendering holes
+       under the default nonzero fill-rule.
     -->
 
   <!-- 1. Left barber pole -->
@@ -51,29 +55,27 @@
   <text x="200" y="195" font-family="'Helvetica Neue', Arial, sans-serif"
         font-weight="900" font-size="44" fill="#FFFFFF" text-anchor="middle">SHOP</text>
 
-  <!-- 6. Mustache — drawn LAST so it sits ON TOP, clearly visible.
-       Classic handlebar with INWARD-curling spiral tips, matching the
-       reference image exactly. Tips curl up and inward toward center. -->
-  <path d="M 200 235
-           C 165 235, 130 220, 100 195
-           C 70 170, 45 160, 25 170
-           C 10 178, 5 195, 18 210
-           C 28 222, 48 218, 65 200
-           C 78 186, 82 165, 68 150
-           C 55 137, 35 142, 22 155
-           C 5 173, 0 198, 15 218
-           C 30 238, 60 230, 90 210
-           C 120 190, 155 205, 185 225
-           C 192 230, 200 235, 200 235
-           C 200 235, 208 230, 215 225
-           C 245 205, 280 190, 310 210
-           C 340 230, 370 238, 385 218
-           C 400 198, 395 173, 378 155
-           C 365 142, 345 137, 332 150
-           C 318 165, 322 186, 335 200
-           C 352 218, 372 222, 382 210
-           C 395 195, 390 178, 375 170
-           C 355 160, 330 170, 300 195
-           C 270 220, 235 235, 200 235 Z"
-        fill="#231F20"/>
+  <!-- 6. Mustache — v4: tightened to stay inside the red oval.
+       Each half is a simple closed path (no self-intersection, no spirals).
+       Tips now peak at x=85/315 so they sit well inside the oval's
+       inner cap radius and don't cover the barber poles at x=40-76 / 324-360.
+       Paths meet at (200, 212) at the philtrum line. -->
+  <g fill="#231F20">
+    <!-- Left half: center → belly down-left → tip curls UP → top back to center -->
+    <path d="M 200 212
+             C 200 222, 190 229, 170 231
+             C 140 234, 110 231, 92 223
+             C 78 216, 74 204, 86 198
+             C 98 195, 108 203, 112 214
+             C 118 222, 148 221, 180 216
+             C 192 213, 198 212, 200 212 Z"/>
+    <!-- Right half: mirror — center → belly down-right → tip curls UP → top back -->
+    <path d="M 200 212
+             C 200 222, 210 229, 230 231
+             C 260 234, 290 231, 308 223
+             C 322 216, 326 204, 314 198
+             C 302 195, 292 203, 288 214
+             C 282 222, 252 221, 220 216
+             C 208 213, 202 212, 200 212 Z"/>
+  </g>
 </svg>

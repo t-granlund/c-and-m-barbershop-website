@@ -26,5 +26,9 @@ Desktop.ini
 # Node (for anyone running local Pa11y/Lighthouse audits)
 node_modules/
 
+# Playwright test results
+test-results/
+playwright-report/
+
 # Research packs — internal working notes, not for the public repo
 research/

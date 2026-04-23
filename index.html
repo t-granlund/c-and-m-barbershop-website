@@ -25,8 +25,11 @@
   <!-- Canonical & Links -->
   <link rel="canonical" href="https://www.candmbarbershop.net/" />
   <link rel="icon" type="image/svg+xml" href="cm-logo.svg" sizes="any" />
-  <link rel="mask-icon" href="cm-logo.svg" color="#B40823" />
   <link rel="apple-touch-icon" href="cm-logo.svg" />
+  <!-- Note: mask-icon removed. Safari's pinned-tab mask-icon requires a
+       single-path monochrome SVG; our multi-path full-color logo does not
+       qualify and was rendering as a solid red blob. Safari gracefully
+       falls back to the regular favicon above. -->
   
   <!-- Resource Hints for Performance -->
   <!-- Preload self-hosted variable fonts so they race the CSS parse. -->
@@ -45,9 +48,13 @@
   <meta property="og:description" content="Classic service for the modern family. Men, women &amp; kids welcome. Serving Northwest Arkansas since 2005. Walk-ins always welcome." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.candmbarbershop.net/" />
-  <meta property="og:image" content="https://www.candmbarbershop.net/cm-logo.svg" />
-  <meta property="og:image:width" content="400" />
-  <meta property="og:image:height" content="300" />
+  <!-- OG image: PNG (1200x630) — Facebook, LinkedIn, and iMessage
+       reject or mis-render SVG og images. Generated from cm-logo.svg
+       and committed alongside the SVG source of truth. -->
+  <meta property="og:image" content="https://www.candmbarbershop.net/og-image.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="C&amp;M Barber Shop logo - red oval with barber poles and mustache" />
   
   <!-- Twitter / X -->
@@ -55,7 +62,7 @@
   <meta name="twitter:site" content="@cm_barbershop" />
   <meta name="twitter:title" content="C&amp;M Barber Shop &amp; Family Hair | Pineville, MO" />
   <meta name="twitter:description" content="Classic service for the modern family. Men, women &amp; kids welcome. Serving NWA since 2005. Walk-ins always welcome." />
-  <meta name="twitter:image" content="https://www.candmbarbershop.net/cm-logo.svg" />
+  <meta name="twitter:image" content="https://www.candmbarbershop.net/og-image.png" />
   <meta name="twitter:image:alt" content="C&amp;M Barber Shop logo" />
 
   <!--
@@ -81,9 +88,9 @@
         "url": "https://www.candmbarbershop.net/",
         "image": {
           "@type": "ImageObject",
-          "url": "https://www.candmbarbershop.net/cm-logo.svg",
-          "width": 400,
-          "height": 300
+          "url": "https://www.candmbarbershop.net/og-image.png",
+          "width": 1200,
+          "height": 630
         },
         "logo": {
           "@type": "ImageObject",
@@ -215,8 +222,10 @@
   </script>
 </head>
 <body>
-  <!-- Skip-to-content (WCAG 2.4.1 AA — architect P1-6) -->
-  <a class="skip-link" href="#about">Skip to content</a>
+  <!-- Skip-to-content (WCAG 2.4.1 AA — architect P1-6)
+       Targets the <main> landmark below so keyboard users jump past the
+       nav to the start of actual page content. -->
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ============ TOP NAV ============ -->
   <header class="nav" role="banner">
@@ -234,6 +243,7 @@
     </nav>
   </header>
 
+  <main id="main" tabindex="-1">
   <!-- ============ HERO ============ -->
   <section id="top" class="hero">
     <div class="hero__veil"></div>
@@ -515,6 +525,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- ============ FOOTER ============ -->
   <footer class="foot">
     <div class="foot__inner">
@@ -522,7 +534,15 @@
       <p class="foot__brand">
         C <span aria-hidden="true">&amp;</span> M Barber Shop &amp; Family Hair
       </p>
-      <p class="foot__tag">Walk-ins always welcome · 116 College Rd #107, Pineville, MO</p>
+      <p class="foot__tag">
+        Walk-ins always welcome ·
+        <a class="foot__link" href="https://www.google.com/maps/search/?api=1&amp;query=116+College+Road+%23107+Pineville+MO" target="_blank" rel="noopener noreferrer">116 College Rd #107, Pineville, MO</a>
+      </p>
+      <p class="foot__tag">
+        <a class="foot__link" href="tel:+14798761072">(479) 876-1072</a>
+        &nbsp;·&nbsp;
+        <a class="foot__link" href="mailto:info@candmbarbershop.net">info@candmbarbershop.net</a>
+      </p>
 
       <ul class="foot__social" aria-label="Social media">
         <li>

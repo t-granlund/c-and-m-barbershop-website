@@ -17,6 +17,7 @@
   --charcoal:   #231F20;  /* Charcoal Black — body text (16:1) */
   --charcoal-soft: #4A4547; /* Softer charcoal for secondary text (9:1) */
   --slate:      #575757;  /* Slate for muted text on white (7:1) */
+  --slate-light: #9DA8B8;  /* Light slate for decorative dots on navy (AA on navy bg) */
 
   /* Legacy aliases for backwards compatibility */
   --navy-dark:  var(--navy);
@@ -27,7 +28,8 @@
   --forest-800: var(--navy);
   --forest-700: var(--navy-mid);
   --forest-600: #3A5A88;
-  --moss:       var(--slate-light);    /* decorative only */
+  --muted:       var(--slate);        /* alias used by guide — single source of truth */
+  --moss:       var(--slate-light);  /* decorative only — now defined above */
   --cream:      var(--white);
   --cream-soft: var(--off-white);
   --walnut:     var(--charcoal);
@@ -105,6 +107,13 @@ a {
   outline-offset: 2px;
 }
 
+/* <main> receives programmatic focus when the skip-link activates.
+   Suppress the default focus ring — the user knows they clicked the
+   skip link, and a giant blue ring around the whole page is noise. */
+main:focus {
+  outline: none;
+}
+
 /* ---------- Universal focus-visible (WCAG 2.4.7 AA — architect P0) ---------- */
 :where(a, button, [tabindex], iframe):focus-visible {
   outline: 3px solid var(--navy);
@@ -144,13 +153,13 @@ a {
   padding: 6rem 1.5rem;
 }
 .section--dark {
-  background: var(--navy-soft);
-  color: var(--navy);
+  background: var(--navy);
+  color: var(--white);
   max-width: none;
 }
 .section--dark .section__title,
 .section--dark .lede {
-  color: var(--navy);
+  color: var(--white);
 }
 .section__title {
   font-family: var(--font-display);

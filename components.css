@@ -472,6 +472,25 @@
   color: var(--slate);
   margin: 0;
 }
+/* Inline footer links (address, phone, email) — inherit tracking, underline
+   on hover/focus so they're discoverable without shouting visually. */
+.foot__link {
+  color: var(--charcoal);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.foot__link:hover,
+.foot__link:focus-visible {
+  color: var(--red);
+  border-bottom-color: var(--red);
+  outline: none;
+}
+.foot__link:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
 .foot__social {
   list-style: none;
   padding: 0;
