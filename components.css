@@ -641,10 +641,13 @@
 @media (max-width: 640px) {
   .section { padding: 4rem 1.25rem; }
   .hours   { padding: 4rem 1.25rem; }
-  .hero    { min-height: 70vh; padding: 5rem 1.25rem 4rem; }
-  .hero__title { font-size: clamp(2.4rem, 9vw, 3.4rem); }
-  .hero__sub   { font-size: 1rem; }
-  .hero__ctas .btn { flex: 1 1 45%; padding: 0.9rem 1rem; font-size: 0.85rem; }
+  .hero    { min-height: 84svh; padding: 4.5rem 1.25rem 10.5rem; }
+  .hero__logo { width: min(330px, 82vw); margin-bottom: 1rem; }
+  .hero__eyebrow { font-size: 0.78rem; letter-spacing: 0.2em; margin-bottom: 0.75rem; }
+  .hero__title { font-size: clamp(2.2rem, 8.8vw, 3.15rem); }
+  .hero__sub   { font-size: 0.98rem; margin-bottom: 1.4rem; }
+  .hero__ctas { display: none; }
+  .hero__scroll { display: none; }
   .section__title { font-size: clamp(1.7rem, 6vw + 0.2rem, 2.2rem); }
   .lede { font-size: 1.02rem; }
   .team__grid { gap: 1rem; }

@@ -83,8 +83,8 @@ test.describe("Mock-up framing notice", () => {
     await page.goto("/");
     const banner = page.locator("[data-mock-banner]");
     await expect(banner).toBeVisible();
-    await expect(banner).toContainText(/mock-up vision/i);
-    await expect(banner.getByRole("link", { name: /open the owner guide/i })).toHaveAttribute("href", "guide/");
+    await expect(banner).toContainText(/mock-up/i);
+    await expect(banner.locator('a[href="guide/"]:visible')).toBeVisible();
   });
 
   test("floating mock-up banner can be dismissed and stays dismissed after reload", async ({ page }) => {
@@ -94,6 +94,23 @@ test.describe("Mock-up framing notice", () => {
     await expect(banner).toBeHidden();
     await page.reload();
     await expect(page.locator("[data-mock-banner]")).toBeHidden();
+  });
+
+  test("mock-up banner does not overlap sticky mobile CTA when both are visible", async ({ page }) => {
+    await page.goto("/");
+    const banner = page.locator("[data-mock-banner]");
+    const mobileCta = page.locator(".mobile-cta");
+
+    if (!(await mobileCta.isVisible())) {
+      await expect(banner).toBeVisible();
+      return;
+    }
+
+    const bannerBox = await banner.boundingBox();
+    const ctaBox = await mobileCta.boundingBox();
+    expect(bannerBox).toBeTruthy();
+    expect(ctaBox).toBeTruthy();
+    expect(bannerBox!.y + bannerBox!.height).toBeLessThanOrEqual(ctaBox!.y - 8);
   });
 });
 
@@ -142,7 +159,10 @@ test.describe("Accessibility smoke", () => {
 
   test("focus-visible rings work on primary CTA", async ({ page }) => {
     await page.goto("/");
-    const cta = page.getByRole("link", { name: /pick your stylist/i });
+    const stickyMobileCta = page.locator(".mobile-cta");
+    const cta = (await stickyMobileCta.isVisible())
+      ? stickyMobileCta
+      : page.getByRole("link", { name: /pick your stylist/i }).first();
     await cta.focus();
     await expect(cta).toBeFocused();
     // Verify focus-visible style is applied (outline-width > 0)

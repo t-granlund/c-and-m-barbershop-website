@@ -151,6 +151,12 @@ main:focus {
   font-size: 0.94rem;
   line-height: 1.45;
 }
+.mock-banner__text--mobile {
+  display: none;
+}
+.mock-banner__text--tiny {
+  display: none;
+}
 .mock-banner__text strong {
   color: var(--white);
 }
@@ -196,6 +202,33 @@ main:focus {
   outline-color: var(--navy);
 }
 
+@media (max-width: 900px) {
+  .mock-banner {
+    right: 0.75rem;
+    bottom: 1rem;
+    max-width: 20rem;
+    padding: 0.7rem 0.8rem;
+    border-radius: 14px;
+  }
+  .mock-banner__content {
+    margin-right: 0;
+    padding-right: 0;
+  }
+  .mock-banner__text--desktop {
+    display: none;
+  }
+  .mock-banner__text--mobile {
+    display: block;
+    font-size: 0.92rem;
+    line-height: 1.35;
+    padding-right: 0.2rem;
+  }
+  .mock-banner__close {
+    position: static;
+    margin-top: 0.7rem;
+  }
+}
+
 @media (max-width: 720px) {
   .mock-banner {
     left: 0.75rem;
@@ -203,13 +236,25 @@ main:focus {
     bottom: 5.5rem;
     max-width: none;
   }
-  .mock-banner__content {
-    margin-right: 0;
-    padding-right: 0;
+}
+
+@media (max-width: 420px) {
+  .mock-banner {
+    padding: 0.52rem 0.62rem;
+    border-radius: 12px;
+  }
+  .mock-banner__eyebrow,
+  .mock-banner__text--mobile {
+    display: none;
+  }
+  .mock-banner__text--tiny {
+    display: block;
+    font-size: 0.84rem;
+    line-height: 1.2;
   }
   .mock-banner__close {
-    position: static;
-    margin-top: 0.8rem;
+    margin-top: 0.42rem;
+    padding: 0.32rem 0.58rem;
   }
 }
 
@@ -441,10 +486,10 @@ main:focus {
 }
 .hero__logo {
   display: block;
-  margin: 0 auto 1.5rem;
+  margin: 0 auto 1.2rem;
   height: auto;
-  width: min(420px, 80vw);
-  filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.22));
+  width: min(400px, 76vw);
+  filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.18));
 }
 .hero__eyebrow {
   font-family: var(--font-cond);
