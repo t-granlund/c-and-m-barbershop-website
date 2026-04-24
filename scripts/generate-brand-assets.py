@@ -157,6 +157,45 @@ def normalize_mark_palette(img: Image.Image) -> Image.Image:
     return img
 
 
+def remove_bottom_right_non_dark(img: Image.Image, start_x_ratio: float = 0.72, start_y_ratio: float = 0.80) -> Image.Image:
+    """Kill leftover poster-arrow junk in the primary logo crop.
+
+    The source poster has a blue/red arrow that peeks into the lower-right of the
+    cropped sign mark. We only remove NON-dark pixels in the bottom-right corner,
+    which preserves the black mustache while evicting the colored shard.
+    """
+    img = img.convert('RGBA')
+    px = img.load()
+    w, h = img.size
+    start_x = int(w * start_x_ratio)
+    start_y = int(h * start_y_ratio)
+    for y in range(start_y, h):
+        for x in range(start_x, w):
+            r, g, b, a = px[x, y]
+            if a and max(r, g, b) > 70:
+                px[x, y] = (r, g, b, 0)
+    return img
+
+
+def patch_primary_logo_corner(img: Image.Image) -> Image.Image:
+    """Remove the final tiny poster-arrow artifact at the lower-right edge.
+
+    Measured directly from the generated 2056x1532 primary asset. This is a
+    tiny blue/red shard that sits below the mustache and should not appear in
+    the cleaned logo crop.
+    """
+    img = img.convert('RGBA')
+    px = img.load()
+    # Exact local cleanup zone for the lingering shard.
+    # Paint it black because this region visually belongs to the mustache.
+    for y in range(1416, 1526):
+        for x in range(1348, 1480):
+            r, g, b, a = px[x, y]
+            if a:
+                px[x, y] = (0, 0, 0, a)
+    return img
+
+
 def pad_square(img: Image.Image, size: int, bg=(0, 0, 0, 0)) -> Image.Image:
     out = Image.new("RGBA", (size, size), bg)
     iw, ih = img.size
@@ -176,6 +215,8 @@ def main() -> None:
     # Primary logo crop: keep the strong badge/sign composition, ditch the arrow.
     # Box tuned from the supplied 2096x2048 source.
     primary = crop_bbox(transparent, (20, 40, 2076, 1588))
+    primary = remove_bottom_right_non_dark(primary, 0.72, 0.80)
+    primary = patch_primary_logo_corner(primary)
     primary.save(ASSETS / "logo-primary.png")
 
     # Compact brand mark: the circular C&M medallion. Best for nav/favicon.
