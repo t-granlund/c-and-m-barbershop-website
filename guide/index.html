@@ -59,7 +59,7 @@
     body {
       font-family: var(--font-body);
       line-height: 1.6;
-      max-width: 820px;
+      max-width: 1280px;
       margin: 0 auto;
       padding: 1.25rem 1.25rem 4rem;
       background: repeating-linear-gradient(180deg, var(--off-white) 0 10px, #EAE1CF 10px 12px, var(--off-white) 12px 22px);
@@ -476,29 +476,96 @@
     }
     tr:nth-child(even) td { background: var(--off-white); }
 
-    /* ---------- TOC (sidebar feel) ---------- */
+    /* ---------- Guide shell + sidebar nav ---------- */
+    .guide-shell {
+      display: grid;
+      grid-template-columns: 290px minmax(0, 1fr);
+      gap: 1.5rem;
+      align-items: start;
+    }
+    .guide-sidebar {
+      position: sticky;
+      top: 1rem;
+      display: grid;
+      gap: 1rem;
+    }
+    .guide-main {
+      min-width: 0;
+    }
     .toc {
       background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1rem 1.25rem;
-      margin: 0 0 1.5rem;
+      border: 2px solid var(--navy);
+      border-radius: 16px;
+      padding: 1rem 1.1rem;
+      margin: 0;
+      box-shadow: 8px 8px 0 rgba(0,0,0,0.78);
     }
     .toc h2 {
-      margin: 0 0 0.5rem;
+      margin: 0 0 0.7rem;
       font-size: 0.85rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       color: var(--muted);
     }
-    .toc ol {
+    .toc ol,
+    .toc ul {
       margin: 0;
-      padding-left: 1.5rem;
+      padding-left: 1rem;
     }
-    .toc li { margin: 0.2rem 0; }
-    .toc a { color: var(--navy); text-decoration: none; }
+    .toc > ol {
+      padding-left: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.2rem;
+    }
+    .toc li { margin: 0; }
+    .toc li + li { margin-top: 0.1rem; }
+    .toc li ul {
+      list-style: none;
+      padding-left: 0.85rem;
+      margin-top: 0.3rem;
+      border-left: 2px solid var(--border);
+    }
+    .toc a {
+      color: var(--navy-dark);
+      text-decoration: none;
+      display: block;
+      padding: 0.38rem 0.55rem;
+      border-radius: 8px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+    .toc li ul a {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--charcoal-soft);
+      padding: 0.28rem 0.45rem;
+    }
     .toc a:hover,
-    .toc a:focus-visible { text-decoration: underline; }
+    .toc a:focus-visible {
+      background: var(--navy-soft);
+      text-decoration: none;
+    }
+    .sidebar-card {
+      background: linear-gradient(180deg, #151515 0%, #0B0B0B 100%);
+      color: var(--white);
+      border: 3px solid var(--navy);
+      border-radius: 16px;
+      padding: 1rem 1.1rem;
+      box-shadow: 8px 8px 0 rgba(0,0,0,0.82);
+    }
+    .sidebar-card h2 {
+      margin: 0 0 0.55rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.82);
+    }
+    .sidebar-card p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.92);
+    }
 
     /* ---------- Footer ---------- */
     .footer {
@@ -544,6 +611,11 @@
     }
 
     /* ---------- Mobile ---------- */
+    @media (max-width: 980px) {
+      .guide-shell { grid-template-columns: 1fr; }
+      .guide-sidebar { position: static; }
+    }
+
     @media (max-width: 600px) {
       body { padding: 1rem 0.9rem 3rem; font-size: 16px; }
       .banner { padding: 1.4rem 1rem; }
@@ -556,6 +628,8 @@
     /* ---------- Print (some folks prefer paper) ---------- */
     @media print {
       body { background: var(--white); max-width: 100%; padding: 0; }
+      .guide-shell { display: block; }
+      .guide-sidebar { display: none !important; }
       .toolbar, .path-card { display: none !important; }
       .step, .intro, .banner, .toc {
         box-shadow: none;
@@ -573,7 +647,7 @@
        back to the main site. */
     .banner .logo {
       display: block;
-      width: 150px;
+      width: 180px;
       margin: 0 auto 0.85rem;
     }
     .banner .logo img { width: 100%; height: auto; display: block; }
@@ -597,13 +671,59 @@
 <!-- Banner — brand-forward so the guide feels like part of the site. -->
 <header class="banner">
   <a class="logo" href="../" aria-label="C&amp;M Barber Shop — back to site preview">
-    <img src="../cm-logo.svg" alt="C&amp;M Barber Shop logo">
+    <img src="../assets/logo-primary.png" alt="C&amp;M Barber Shop logo">
   </a>
   <span class="eyebrow">Owner Guide</span>
   <h1>Your Website, Step by Step</h1>
   <p class="welcome">Everything you need to put your new site online, keep it running, and fix it if it ever breaks. Written for shop owners — no tech background required.</p>
   <span class="stamp">★ Bookmark this page ★</span>
 </header>
+
+<div class="guide-shell">
+  <aside class="guide-sidebar" aria-label="Guide navigation and status">
+    <div class="sidebar-card">
+      <h2>Quick start</h2>
+      <p>Use this side menu to jump to each step. Your checklist progress still saves in your browser.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TABLE OF CONTENTS / SIDEBAR NAV                               -->
+    <!-- ============================================================ -->
+    <nav class="toc" aria-label="Guide sections">
+      <h2>Guide sections</h2>
+      <ol>
+        <li><a href="#step-1">1. Find where your domain lives</a></li>
+        <li><a href="#step-2">2. Pick your path: Pro or DIY</a></li>
+        <li>
+          <a href="#step-3">3. Put the site online</a>
+          <ul>
+            <li><a href="#path-pro">Path A — Pay a Pro</a></li>
+            <li><a href="#path-diy">Path B — Do it yourself</a></li>
+          </ul>
+        </li>
+        <li><a href="#step-4">4. Connect your real web address</a></li>
+        <li><a href="#step-5">5. Phone-test the live site</a></li>
+        <li><a href="#step-6">6. Turn on analytics</a></li>
+        <li>
+          <a href="#step-7">7. How to edit things later</a>
+          <ul>
+            <li><a href="#edit-file-reference">File reference</a></li>
+            <li><a href="#edit-business-facts">Business facts</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#step-8">8. If something goes wrong</a>
+          <ul>
+            <li><a href="#troubleshoot-order">In order, try these</a></li>
+            <li><a href="#troubleshoot-common">Common problems</a></li>
+            <li><a href="#credential-list">Credential list</a></li>
+          </ul>
+        </li>
+      </ol>
+    </nav>
+  </aside>
+
+  <main class="guide-main">
 
 <!-- ============================================================ -->
 <!-- INTRO                                                        -->
@@ -627,22 +747,6 @@
   <span class="progress" id="progress">0 of 0 complete</span>
 </div>
 
-<!-- ============================================================ -->
-<!-- TABLE OF CONTENTS                                            -->
-<!-- ============================================================ -->
-<nav class="toc" aria-label="Table of contents">
-  <h2>What's in this guide</h2>
-  <ol>
-    <li><a href="#step-1">Find where your domain lives</a></li>
-    <li><a href="#step-2">Pick your path: Pro or DIY</a></li>
-    <li><a href="#step-3">Put the site online</a></li>
-    <li><a href="#step-4">Connect your real web address</a></li>
-    <li><a href="#step-5">Phone-test the live site</a></li>
-    <li><a href="#step-6">Turn on analytics (optional)</a></li>
-    <li><a href="#step-7">How to edit things later</a></li>
-    <li><a href="#step-8">If something goes wrong</a></li>
-  </ol>
-</nav>
 
 <!-- ============================================================ -->
 <!-- STEP 1 — FIND YOUR DOMAIN                                    -->
@@ -953,7 +1057,7 @@
     </ul>
   </details>
 
-  <h3>File reference</h3>
+  <h3 id="edit-file-reference">File reference</h3>
   <table>
     <thead>
       <tr><th>File</th><th>What it does</th><th>Touch it if…</th></tr>
@@ -963,7 +1067,7 @@
       <tr><td><code>script.js</code></td><td>The "Open now" live clock</td><td>Your hours change</td></tr>
       <tr><td><code>styles.css</code></td><td>Colors, fonts, main layout</td><td>Leave alone unless brave</td></tr>
       <tr><td><code>components.css</code></td><td>Section-level styling</td><td>Leave alone unless brave</td></tr>
-      <tr><td><code>cm-logo.svg</code></td><td>Your C&amp;M logo</td><td>Only if the logo itself changes</td></tr>
+      <tr><td><code>assets/logo-primary.png</code> + logo assets</td><td>Your current C&amp;M logo system</td><td>Only if the branding changes again</td></tr>
       <tr><td><code>fonts/</code></td><td>Website typefaces (Oswald + Open Sans)</td><td><strong>Never touch this folder.</strong></td></tr>
       <tr><td><code>_headers</code></td><td>Security settings</td><td><strong>Never delete this file.</strong></td></tr>
     </tbody>
@@ -981,7 +1085,7 @@
 
   <p>Take a breath. Your files are backed up in more than one place. The live site can always be restored.</p>
 
-  <h3>In order, try these</h3>
+  <h3 id="troubleshoot-order">In order, try these</h3>
 
   <ol>
     <li><strong>Text Tyler.</strong> He built this, he can usually fix it in 10 minutes.</li>
@@ -989,7 +1093,7 @@
     <li><strong>Restore from backup.</strong> Your 6 files are safe in at least 3 places: this folder, your email, and the GitHub repo Tyler set up. Any web developer can redeploy the site in 30 minutes from any of those copies.</li>
   </ol>
 
-  <h3>Common problems &amp; quick fixes</h3>
+  <h3 id="troubleshoot-common">Common problems &amp; quick fixes</h3>
 
   <details>
     <summary>The site is showing the wrong information</summary>
@@ -1018,7 +1122,7 @@
     <p>Total time: ~30 minutes. No files are lost.</p>
   </details>
 
-  <h3>The credential list (write this on paper, keep in the shop's file cabinet)</h3>
+  <h3 id="credential-list">The credential list (write this on paper, keep in the shop's file cabinet)</h3>
 
   <ul class="todos" data-section="recovery">
     <li data-id="bk-domain"><input type="checkbox">
@@ -1048,7 +1152,7 @@
     <h2>The one-page cheat sheet</h2>
   </div>
 
-  <h3>Business facts that must stay accurate</h3>
+  <h3 id="edit-business-facts">Business facts that must stay accurate</h3>
   <ul>
     <li><strong>Address:</strong> 116 College Road #107, Pineville, MO 64856</li>
     <li><strong>Hours:</strong> Mon–Fri 8:00–5:00 · Sat 8:00–12:00 · Sun closed</li>
@@ -1073,6 +1177,9 @@
     <li>Keep a USB backup of the website folder.</li>
   </ol>
 </section>
+
+  </main>
+</div>
 
 <!-- Footer — honest, personal, signed. -->
 <footer class="footer">
