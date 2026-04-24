@@ -115,6 +115,46 @@
       box-shadow: none;
     }
 
+    .guide-note {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(181, 42, 44, 0.24);
+      border-radius: 14px;
+      padding: 1rem 1.15rem;
+      margin: 0 0 0.9rem;
+      box-shadow: 0 4px 14px -12px rgba(0,0,0,0.16);
+    }
+    .guide-note__signal {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin: 0 0 0.45rem;
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+    .guide-note__dot {
+      width: 0.72rem;
+      height: 0.72rem;
+      border-radius: 999px;
+      background: var(--red-hot);
+      box-shadow: 0 0 0 0 rgba(200, 58, 61, 0.42);
+      animation: guidePulse 1.8s ease-out infinite;
+    }
+    .guide-note p {
+      margin: 0.35rem 0;
+    }
+    .guide-note strong {
+      color: var(--navy-dark);
+    }
+
+    @keyframes guidePulse {
+      0% { box-shadow: 0 0 0 0 rgba(200, 58, 61, 0.42); }
+      70% { box-shadow: 0 0 0 10px rgba(200, 58, 61, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(200, 58, 61, 0); }
+    }
+
     /* ---------- Intro card ---------- */
     .intro {
       background: var(--white);
@@ -197,6 +237,8 @@
     }
     .path-card.easy .tag { background: var(--green-soft); color: var(--green); }
     .path-card.diy .tag  { background: var(--amber-soft); color: var(--amber); }
+    .resource-card--tools .tag { background: var(--green-soft); color: var(--green); }
+    .resource-card--pro .tag { background: var(--amber-soft); color: var(--amber); }
     .path-card h3 {
       margin: 0 0 0.35rem;
       font-size: 1.3rem;
@@ -594,6 +636,7 @@
     }
     @media (prefers-reduced-motion: reduce) {
       * { transition: none !important; }
+      .guide-note__dot { animation: none !important; }
     }
 
     /* ---------- Mobile ---------- */
@@ -666,6 +709,12 @@
   <p class="welcome">Everything you need to put your new site online, keep it running, and fix it if it ever breaks.</p>
   <span class="stamp">★ Bookmark this page ★</span>
 </header>
+
+<section class="guide-note" aria-label="About this guide">
+  <div class="guide-note__signal"><span class="guide-note__dot" aria-hidden="true"></span>Vision preview — no obligation</div>
+  <p><strong>This guide goes with a mock-up</strong> — a polished example meant to show one possible direction for the shop's brand, website structure, and future functionality.</p>
+  <p>I put this together as a friendly gesture so you could see the vision clearly, with a real design system and working infrastructure behind it. Use it if it helps. Ignore it if it doesn't. No pressure either way.</p>
+</section>
 
 <div class="guide-shell">
   <aside class="guide-sidebar" aria-label="Guide navigation and status">
@@ -926,7 +975,7 @@
     <h2>Phone-test the live site <span class="time">~5 min</span></h2>
   </div>
 
-  <p>Open the site on your phone (not a computer — your customers are on phones) and check each of these. If any one fails, note it and text Tyler.</p>
+  <p>Open the site on your phone (not a computer — your customers are on phones) and check each of these. If any one fails, note it so you can fix it yourself or hand it to a contractor.</p>
 
   <ul class="todos" data-section="test">
     <li data-id="t-loads"><input type="checkbox">
@@ -949,7 +998,7 @@
 
   <div class="callout win">
     <strong>✅ All checked?</strong>
-    <p>Your site is officially live and working. Celebrate. Tell Tyler. Post the link on Facebook. You did it.</p>
+    <p>Your site is officially live and working. Celebrate. Post the link on Facebook. You did it.</p>
   </div>
 </section>
 
@@ -1011,7 +1060,7 @@
       <li>Change it in <strong>every</strong> place it appears — the visible text, the <code>tel:</code> link, and the <code>sms:</code> link. Usually 3 places per stylist.</li>
       <li>Save. Re-upload the folder to Cloudflare Pages.</li>
     </ol>
-    <p style="margin-top:0.5rem;"><em>Feels risky? Text Tyler a screenshot of the old + new number. 10-minute fix for someone who knows HTML.</em></p>
+    <p style="margin-top:0.5rem;"><em>Feels risky? Hand this file and the old/new number to a contractor on Fiverr or Upwork. This is a 10-minute HTML fix for the right person.</em></p>
   </details>
 
   <details>
@@ -1021,12 +1070,12 @@
       <li>Also update the <code>HOURS</code> table near the top of <code>script.js</code> — this is what powers the live "Open now" dot.</li>
       <li>Save both files. Re-upload.</li>
     </ol>
-    <p style="margin-top:0.5rem;"><em>If you only update <code>index.html</code> and forget <code>script.js</code>, the "Open now" dot will be wrong. When in doubt, text Tyler.</em></p>
+    <p style="margin-top:0.5rem;"><em>If you only update <code>index.html</code> and forget <code>script.js</code>, the "Open now" dot will be wrong. When in doubt, hire a contractor who can edit both files together.</em></p>
   </details>
 
   <details>
     <summary>👋 A stylist left, or a new one joined</summary>
-    <p>Honestly: <strong>pay a pro $20 on Fiverr</strong> or <strong>text Tyler a photo of the business card</strong>. This is the one edit where the copy-paste is finicky enough that hiring help saves frustration.</p>
+    <p>Honestly: <strong>pay a pro $20–50 on Fiverr or Upwork</strong>. This is the one edit where the copy-paste is finicky enough that hiring help saves frustration.</p>
     <p>If you're determined to do it yourself: find an existing stylist's card block in <code>index.html</code> (search for a name you know), copy the whole <code>&lt;article&gt;...&lt;/article&gt;</code> block, paste it next to the original, and change the name, role, initials, and phone number. Save. Re-upload.</p>
   </details>
 
@@ -1076,9 +1125,9 @@
   <h3 id="troubleshoot-order">In order, try these</h3>
 
   <ol>
-    <li><strong>Text Tyler.</strong> He built this, he can usually fix it in 10 minutes.</li>
-    <li><strong>Post a Fiverr job.</strong> Title it "Fix my Cloudflare Pages site." Budget $30–75. Usually fixed within 24 hours. Attach your website folder.</li>
-    <li><strong>Restore from backup.</strong> Your 6 files are safe in at least 3 places: this folder, your email, and the GitHub repo Tyler set up. Any web developer can redeploy the site in 30 minutes from any of those copies.</li>
+    <li><strong>Roll back in Cloudflare.</strong> Go to <strong>Deployments</strong> and restore the last working version.</li>
+    <li><strong>Post a Fiverr or Upwork job.</strong> Title it "Fix my Cloudflare Pages site." Budget $30–75. Attach your website folder and this guide.</li>
+    <li><strong>Restore from backup.</strong> Your files are safe in more than one place: this folder, your email, and any backup copies you save. Any web developer can redeploy the site in about 30 minutes from those files.</li>
   </ol>
 
   <h3 id="troubleshoot-common">Common problems &amp; quick fixes</h3>
@@ -1166,21 +1215,48 @@
   </ol>
 </section>
 
+<section class="step" aria-labelledby="next-help-options">
+  <div class="step-head">
+    <span class="step-num">+</span>
+    <h2 id="next-help-options">If you want help later</h2>
+  </div>
+  <p>You do <strong>not</strong> need ongoing support from the person who made this mock-up. Use whichever path fits your comfort level and budget.</p>
+
+  <div class="paths">
+    <div class="path-card resource-card resource-card--tools" style="cursor:default;">
+      <span class="tag">Self-serve</span>
+      <h3>Agentic tools</h3>
+      <p>Great for simple updates, copy changes, troubleshooting, and getting step-by-step help in plain English.</p>
+      <ul>
+        <li><a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">ChatGPT</a> — ask for exact HTML/CSS edits.</li>
+        <li><a href="https://claude.ai" target="_blank" rel="noopener noreferrer">Claude</a> — strong at careful file-by-file edits.</li>
+        <li><a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer">Gemini</a> — useful for walkthroughs and screenshots.</li>
+      </ul>
+      <p class="meta">Best prompt: “I have a static website hosted on Cloudflare Pages. Here is the file and the change I need…”</p>
+    </div>
+
+    <div class="path-card resource-card resource-card--pro" style="cursor:default;">
+      <span class="tag">Hire help</span>
+      <h3>Contracted services</h3>
+      <p>Best for staff changes, larger design edits, logo cleanup, domain issues, or anything that feels annoying.</p>
+      <ul>
+        <li><a href="https://www.fiverr.com/search/gigs?query=cloudflare%20pages%20static%20website" target="_blank" rel="noopener noreferrer">Fiverr</a></li>
+        <li><a href="https://www.upwork.com/search/services/?q=static%20website%20cloudflare" target="_blank" rel="noopener noreferrer">Upwork</a></li>
+        <li>Search terms: <code>static website</code>, <code>Cloudflare Pages</code>, <code>HTML/CSS</code></li>
+      </ul>
+      <p class="meta">Ask for fixed-price jobs and require screenshots before/after.</p>
+    </div>
+  </div>
+</section>
+
   </main>
 </div>
 
-<!-- Footer — honest, personal, signed. -->
 <footer class="footer">
-  <p class="signature">
-    Made by <strong>Tyler Granlund</strong> —
-    a Bella Vista local looking out for small business owners
-    <span aria-hidden="true">🤘🏼</span>
-  </p>
   <p class="mission">
-    Helping real shops break through tech friction so their craft, not
-    their website, is what wins customers.
+    This package was created as a one-time vision piece to show what the brand, site structure, and future functionality could look like with clear direction and confidence.
   </p>
-  <p class="contact">Questions? Text Tyler.</p>
+  <p class="contact">Use this guide, agentic tools, or a paid contractor if you decide to move forward.</p>
 </footer>
 
 <!-- ============================================================ -->

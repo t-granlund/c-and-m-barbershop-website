@@ -11,6 +11,35 @@
    ========================================================= */
 
 (() => {
+  // ---- Floating mock-up notice ----------------------------------------
+  const MOCK_BANNER_KEY = "cm-mock-banner-dismissed";
+  const mockBanner = document.querySelector("[data-mock-banner]");
+  const mockBannerClose = document.querySelector("[data-mock-banner-close]");
+
+  const dismissMockBanner = () => {
+    if (!mockBanner) return;
+    mockBanner.hidden = true;
+    try {
+      localStorage.setItem(MOCK_BANNER_KEY, "true");
+    } catch (error) {
+      // Storage can fail in privacy modes. Banner still dismisses for this session.
+    }
+  };
+
+  if (mockBanner) {
+    try {
+      if (localStorage.getItem(MOCK_BANNER_KEY) === "true") {
+        mockBanner.hidden = true;
+      }
+    } catch (error) {
+      // Ignore storage read errors. YAGNI for a more dramatic fallback.
+    }
+  }
+
+  if (mockBanner && mockBannerClose) {
+    mockBannerClose.addEventListener("click", dismissMockBanner);
+  }
+
   // ---- Footer year -----------------------------------------------------
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();

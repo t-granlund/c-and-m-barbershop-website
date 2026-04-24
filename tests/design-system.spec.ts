@@ -78,6 +78,25 @@ test.describe("Design system integrity", () => {
   });
 });
 
+test.describe("Mock-up framing notice", () => {
+  test("floating mock-up banner renders with guide link", async ({ page }) => {
+    await page.goto("/");
+    const banner = page.locator("[data-mock-banner]");
+    await expect(banner).toBeVisible();
+    await expect(banner).toContainText(/mock-up vision/i);
+    await expect(banner.getByRole("link", { name: /open the owner guide/i })).toHaveAttribute("href", "guide/");
+  });
+
+  test("floating mock-up banner can be dismissed and stays dismissed after reload", async ({ page }) => {
+    await page.goto("/");
+    const banner = page.locator("[data-mock-banner]");
+    await banner.getByRole("button", { name: /dismiss mock-up notice/i }).click();
+    await expect(banner).toBeHidden();
+    await page.reload();
+    await expect(page.locator("[data-mock-banner]")).toBeHidden();
+  });
+});
+
 test.describe("Accessibility smoke", () => {
   test("skip link is keyboard-focusable", async ({ page }) => {
     await page.goto("/");
