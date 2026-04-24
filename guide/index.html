@@ -78,38 +78,41 @@
 
     /* ---------- Top banner ---------- */
     .banner {
-      background: linear-gradient(180deg, #151515 0%, #0B0B0B 100%);
-      color: var(--white);
-      border-radius: 16px;
-      padding: 1.1rem 1.25rem 1rem;
-      margin: 0 0 1rem;
+      background: rgba(255,255,255,0.94);
+      color: var(--charcoal);
+      border-radius: 14px;
+      padding: 0.95rem 1.15rem 0.9rem;
+      margin: 0 0 0.9rem;
       text-align: center;
-      border: 2px solid var(--navy);
-      box-shadow: 0 10px 24px -18px rgba(0,0,0,0.6);
+      border: 1px solid rgba(43, 87, 165, 0.28);
+      box-shadow: 0 8px 18px -16px rgba(0,0,0,0.35);
     }
     .banner h1 {
-      margin: 0 0 0.25rem;
-      font-size: 1.75rem;
+      margin: 0 0 0.2rem;
+      font-size: 1.45rem;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       line-height: 1.05;
+      color: var(--navy-dark);
     }
     .banner .welcome {
       margin: 0 auto;
-      max-width: 52rem;
-      font-size: 1rem;
-      opacity: 0.94;
+      max-width: 48rem;
+      font-size: 0.98rem;
+      color: var(--charcoal-soft);
     }
     .banner .stamp {
-      margin-top: 0.8rem;
+      margin-top: 0.7rem;
       display: inline-block;
-      background: linear-gradient(180deg, var(--red-hot) 0%, var(--red) 100%);
-      border: 1px solid var(--navy);
-      padding: 0.3rem 0.75rem;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      letter-spacing: 0.06em;
+      background: var(--white);
+      color: var(--navy-dark);
+      border: 1px solid rgba(43, 87, 165, 0.35);
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      box-shadow: none;
     }
 
     /* ---------- Intro card ---------- */
@@ -117,8 +120,9 @@
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 1.25rem 1.5rem;
-      margin: 0 0 1.5rem;
+      padding: 1.15rem 1.35rem;
+      margin: 0 0 1rem;
+      box-shadow: 0 4px 14px -12px rgba(0,0,0,0.18);
     }
     .intro p { margin: 0 0 0.6rem; }
     .intro p:last-child { margin-bottom: 0; }
@@ -129,7 +133,7 @@
       display: flex;
       gap: 0.5rem;
       flex-wrap: wrap;
-      margin: 0 0 1.5rem;
+      margin: 0 0 1rem;
     }
     .toolbar button {
       background: var(--white);
@@ -216,9 +220,9 @@
     .step {
       background: var(--white);
       border-radius: 14px;
-      padding: 1.4rem 1.4rem 1.15rem;
-      margin: 0 0 1rem;
-      box-shadow: 0 4px 16px -10px rgba(27, 54, 93, 0.16);
+      padding: 1.3rem 1.3rem 1.05rem;
+      margin: 0 0 0.9rem;
+      box-shadow: 0 4px 16px -10px rgba(27, 54, 93, 0.14);
       border-left: 5px solid var(--red);
     }
     .step.navy { border-left-color: var(--navy); }
@@ -480,7 +484,7 @@
     /* ---------- Guide shell + sidebar nav ---------- */
     .guide-shell {
       display: grid;
-      grid-template-columns: 250px minmax(0, 1fr);
+      grid-template-columns: 230px minmax(0, 1fr);
       gap: 1rem;
       align-items: start;
     }
@@ -547,26 +551,7 @@
       background: var(--navy-soft);
       text-decoration: none;
     }
-    .sidebar-card {
-      background: rgba(255,255,255,0.88);
-      color: var(--charcoal);
-      border: 1px solid rgba(43, 87, 165, 0.3);
-      border-radius: 12px;
-      padding: 0.9rem 0.95rem;
-      box-shadow: 0 8px 18px -16px rgba(0,0,0,0.45);
-    }
-    .sidebar-card h2 {
-      margin: 0 0 0.45rem;
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .sidebar-card p {
-      margin: 0;
-      font-size: 0.92rem;
-      color: var(--charcoal-soft);
-    }
+    .sidebar-card { display: none; }
 
     /* ---------- Footer ---------- */
     .footer {
@@ -616,12 +601,13 @@
       .guide-shell { grid-template-columns: 1fr; }
       .guide-sidebar { position: static; }
       .sidebar-card { display: none; }
+      .toc { margin-bottom: 0.8rem; }
     }
 
     @media (max-width: 600px) {
       body { padding: 1rem 0.9rem 3rem; font-size: 16px; }
-      .banner { padding: 1.4rem 1rem; }
-      .banner h1 { font-size: 1.5rem; }
+      .banner { padding: 0.95rem 0.9rem 0.9rem; }
+      .banner h1 { font-size: 1.28rem; }
       .paths { grid-template-columns: 1fr; }
       .step { padding: 1.2rem 1.1rem 1rem; }
       .step h2 { font-size: 1.15rem; }
@@ -649,8 +635,8 @@
        back to the main site. */
     .banner .logo {
       display: block;
-      width: 120px;
-      margin: 0 auto 0.55rem;
+      width: 88px;
+      margin: 0 auto 0.35rem;
     }
     .banner .logo img { width: 100%; height: auto; display: block; }
 
@@ -659,12 +645,12 @@
     .banner .eyebrow {
       display: inline-block;
       font-family: var(--font-display);
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 500;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      opacity: 0.8;
-      margin-bottom: 0.3rem;
+      color: var(--red);
+      margin-bottom: 0.25rem;
     }
   </style>
 </head>
