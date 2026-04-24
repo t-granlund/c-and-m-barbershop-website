@@ -59,9 +59,9 @@
     body {
       font-family: var(--font-body);
       line-height: 1.6;
-      max-width: 1280px;
+      max-width: 1240px;
       margin: 0 auto;
-      padding: 1.25rem 1.25rem 4rem;
+      padding: 1rem 1rem 3rem;
       background: repeating-linear-gradient(180deg, var(--off-white) 0 10px, #EAE1CF 10px 12px, var(--off-white) 12px 22px);
       color: var(--charcoal);
       font-size: 17px;
@@ -80,35 +80,36 @@
     .banner {
       background: linear-gradient(180deg, #151515 0%, #0B0B0B 100%);
       color: var(--white);
-      border-radius: 18px;
-      padding: 1.75rem 1.5rem;
-      margin: 0 0 1.5rem;
+      border-radius: 16px;
+      padding: 1.1rem 1.25rem 1rem;
+      margin: 0 0 1rem;
       text-align: center;
-      border: 4px solid var(--navy);
-      box-shadow: 8px 8px 0 rgba(0,0,0,0.85);
+      border: 2px solid var(--navy);
+      box-shadow: 0 10px 24px -18px rgba(0,0,0,0.6);
     }
     .banner h1 {
-      margin: 0 0 0.3rem;
-      font-size: 2rem;
+      margin: 0 0 0.25rem;
+      font-size: 1.75rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       line-height: 1.05;
     }
     .banner .welcome {
-      margin: 0;
-      font-size: 1.05rem;
-      opacity: 0.95;
+      margin: 0 auto;
+      max-width: 52rem;
+      font-size: 1rem;
+      opacity: 0.94;
     }
     .banner .stamp {
-      margin-top: 1rem;
+      margin-top: 0.8rem;
       display: inline-block;
       background: linear-gradient(180deg, var(--red-hot) 0%, var(--red) 100%);
-      border: 2px solid var(--navy);
-      padding: 0.35rem 0.9rem;
-      border-radius: 10px;
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
+      border: 1px solid var(--navy);
+      padding: 0.3rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
     }
 
     /* ---------- Intro card ---------- */
@@ -215,10 +216,10 @@
     .step {
       background: var(--white);
       border-radius: 14px;
-      padding: 1.5rem 1.5rem 1.25rem;
-      margin: 0 0 1.25rem;
-      box-shadow: 0 4px 16px -10px rgba(27, 54, 93, 0.2);
-      border-left: 6px solid var(--red);
+      padding: 1.4rem 1.4rem 1.15rem;
+      margin: 0 0 1rem;
+      box-shadow: 0 4px 16px -10px rgba(27, 54, 93, 0.16);
+      border-left: 5px solid var(--red);
     }
     .step.navy { border-left-color: var(--navy); }
     .step.green { border-left-color: var(--green); }
@@ -479,30 +480,30 @@
     /* ---------- Guide shell + sidebar nav ---------- */
     .guide-shell {
       display: grid;
-      grid-template-columns: 290px minmax(0, 1fr);
-      gap: 1.5rem;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 1rem;
       align-items: start;
     }
     .guide-sidebar {
       position: sticky;
       top: 1rem;
       display: grid;
-      gap: 1rem;
+      gap: 0.8rem;
     }
     .guide-main {
       min-width: 0;
     }
     .toc {
-      background: var(--white);
-      border: 2px solid var(--navy);
-      border-radius: 16px;
-      padding: 1rem 1.1rem;
+      background: rgba(255,255,255,0.96);
+      border: 1px solid rgba(43, 87, 165, 0.35);
+      border-radius: 12px;
+      padding: 0.9rem 0.95rem;
       margin: 0;
-      box-shadow: 8px 8px 0 rgba(0,0,0,0.78);
+      box-shadow: 0 8px 18px -16px rgba(0,0,0,0.45);
     }
     .toc h2 {
-      margin: 0 0 0.7rem;
-      font-size: 0.85rem;
+      margin: 0 0 0.55rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--muted);
@@ -530,16 +531,16 @@
       color: var(--navy-dark);
       text-decoration: none;
       display: block;
-      padding: 0.38rem 0.55rem;
+      padding: 0.32rem 0.45rem;
       border-radius: 8px;
       font-weight: 700;
       line-height: 1.25;
     }
     .toc li ul a {
-      font-size: 0.9rem;
+      font-size: 0.86rem;
       font-weight: 600;
       color: var(--charcoal-soft);
-      padding: 0.28rem 0.45rem;
+      padding: 0.22rem 0.35rem;
     }
     .toc a:hover,
     .toc a:focus-visible {
@@ -547,24 +548,24 @@
       text-decoration: none;
     }
     .sidebar-card {
-      background: linear-gradient(180deg, #151515 0%, #0B0B0B 100%);
-      color: var(--white);
-      border: 3px solid var(--navy);
-      border-radius: 16px;
-      padding: 1rem 1.1rem;
-      box-shadow: 8px 8px 0 rgba(0,0,0,0.82);
+      background: rgba(255,255,255,0.88);
+      color: var(--charcoal);
+      border: 1px solid rgba(43, 87, 165, 0.3);
+      border-radius: 12px;
+      padding: 0.9rem 0.95rem;
+      box-shadow: 0 8px 18px -16px rgba(0,0,0,0.45);
     }
     .sidebar-card h2 {
-      margin: 0 0 0.55rem;
-      font-size: 0.82rem;
-      letter-spacing: 0.12em;
+      margin: 0 0 0.45rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.82);
+      color: var(--muted);
     }
     .sidebar-card p {
       margin: 0;
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.92);
+      font-size: 0.92rem;
+      color: var(--charcoal-soft);
     }
 
     /* ---------- Footer ---------- */
@@ -614,6 +615,7 @@
     @media (max-width: 980px) {
       .guide-shell { grid-template-columns: 1fr; }
       .guide-sidebar { position: static; }
+      .sidebar-card { display: none; }
     }
 
     @media (max-width: 600px) {
@@ -647,8 +649,8 @@
        back to the main site. */
     .banner .logo {
       display: block;
-      width: 180px;
-      margin: 0 auto 0.85rem;
+      width: 120px;
+      margin: 0 auto 0.55rem;
     }
     .banner .logo img { width: 100%; height: auto; display: block; }
 
@@ -657,12 +659,12 @@
     .banner .eyebrow {
       display: inline-block;
       font-family: var(--font-display);
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       font-weight: 500;
-      letter-spacing: 0.28em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       opacity: 0.8;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.3rem;
     }
   </style>
 </head>
@@ -675,7 +677,7 @@
   </a>
   <span class="eyebrow">Owner Guide</span>
   <h1>Your Website, Step by Step</h1>
-  <p class="welcome">Everything you need to put your new site online, keep it running, and fix it if it ever breaks. Written for shop owners — no tech background required.</p>
+  <p class="welcome">Everything you need to put your new site online, keep it running, and fix it if it ever breaks.</p>
   <span class="stamp">★ Bookmark this page ★</span>
 </header>
 
@@ -683,7 +685,7 @@
   <aside class="guide-sidebar" aria-label="Guide navigation and status">
     <div class="sidebar-card">
       <h2>Quick start</h2>
-      <p>Use this side menu to jump to each step. Your checklist progress still saves in your browser.</p>
+      <p>Use the side menu to jump between steps and key subsections.</p>
     </div>
 
     <!-- ============================================================ -->
